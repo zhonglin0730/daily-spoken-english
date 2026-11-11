@@ -8,7 +8,15 @@
 
 首课使用英语合成 WAV，网页按需加载并支持分段读取。新课的英语文本由设备朗读。浏览器没有英语语音时仍可查看原文。
 
-## 发布与每日更新
+## Cloudflare Workers 发布
+
+生产配置使用 `daily-spoken-english` D1 数据库和自定义域名 `english.2020453.xyz`。首次部署时执行 `npx wrangler d1 migrations apply DB --remote` 初始化表，再执行 `npx wrangler deploy`。在新账户复用代码时，先替换配置中的数据库 ID 和域名。
+
+在 Cloudflare Worker 的 Builds 设置中连接 GitHub 仓库 `zhonglin0730/daily-spoken-english`，生产分支选 `main`，部署命令填 `npx wrangler deploy`。Wrangler 会按配置构建站点。后续新增 D1 迁移时，在发布依赖新表结构的代码前先应用迁移。
+
+Cloudflare Cron 每天北京时间 07:00 通过 Workers AI 生成一课并写入 D1。数据库按日期保存课程，同日再次执行会保留已生成的课程。生成失败时，可从 Cloudflare 的 Worker 日志查看原因。线上网页可读取课程，生成任务在 Worker 内部执行。
+
+## Sites 发布与每日更新
 
 网站采用 Sites 私有访问。发布后先验证 D1 迁移、移动端登录和首课音频，再通过 Site 提供的课程工具验证无人值守的读写。首次创建站点后把返回的站点 ID 写入 `.openai/hosting.json`，源代码只提交到该站点的专用仓库。
 

@@ -48,8 +48,8 @@ function conforms(value, schema) {
   return value.length <= schema.maxLength;
 }
 
-function shanghaiDay() {
-  const parts = Object.fromEntries(shanghaiCalendar.formatToParts(new Date()).map(({ type, value }) => [type, value]));
+function shanghaiDay(date = new Date()) {
+  const parts = Object.fromEntries(shanghaiCalendar.formatToParts(date).map(({ type, value }) => [type, value]));
   return `${parts.year}-${parts.month}-${parts.day}`;
 }
 
@@ -125,12 +125,41 @@ async function callTool(db, name, args) {
   }
   if (lesson.date === assets.seed.date) return toolResult({ created: false, lesson: assets.seed });
 
+  const created = await insertLesson(db, lesson);
+  const saved = await readLesson(db, lesson.date);
+  if (!saved) return toolResult({ error: "课程写入后未能读回。" }, true);
+  return toolResult({ created, lesson: saved });
+}
+
+async function insertLesson(db, lesson) {
   const result = await db.prepare(
     "INSERT INTO daily_lessons (day, title, payload) VALUES (?, ?, ?) ON CONFLICT(day) DO NOTHING",
   ).bind(lesson.date, lesson.title, JSON.stringify(lesson)).run();
-  const saved = await readLesson(db, lesson.date);
-  if (!saved) return toolResult({ error: "课程写入后未能读回。" }, true);
-  return toolResult({ created: result.meta.changes === 1, lesson: saved });
+  return result.meta.changes === 1;
+}
+
+async function generateLesson(env, scheduledTime) {
+  const date = shanghaiDay(new Date(scheduledTime));
+  if (await readLesson(env.DB, date)) return;
+  const recent = (await archive(env.DB, date)).filter((item) => item.date < date).slice(0, 7);
+  const previous = recent.length ? await readLesson(env.DB, recent[0].date) : null;
+  const category = previous?.category === "travel" ? "work" : "travel";
+  const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fast", {
+    messages: [{ role: "system", content: [
+      "生成一节 5 分钟的入门英语口语课。用户为练习海外旅行和 Java 工作沟通的中文母语者。",
+      "用短而自然的英文。listen.prompt 用中文布置一个听力任务，保留答案到 en 和 zh。",
+      "phrases 给三至四句可直接说的中英对照。speak.prompt 用中文设置不同场景，speak.sample 给英文参考。",
+      "不编造用户项目或成绩。避免重复近七课题。输出符合 schema 的 JSON 对象。",
+    ].join(" ") }, { role: "user", content: JSON.stringify({ date, category, recent: recent.map(({ title }) => title) }) }],
+    response_format: { type: "json_schema", json_schema: lessonSchema },
+    max_tokens: 1000,
+  });
+  const raw = typeof result.response === "string" ? JSON.parse(result.response) : result.response;
+  if (!conforms(raw, lessonSchema) || raw.date !== date || raw.category !== category) {
+    throw new Error(`Invalid generated lesson for ${date}`);
+  }
+  await insertLesson(env.DB, raw);
+  console.log(`Daily lesson available for ${date}`);
 }
 
 async function handleMcp(request, db) {
@@ -148,13 +177,16 @@ async function handleMcp(request, db) {
 }
 
 export default {
+  async scheduled(controller, env) {
+    await generateLesson(env, controller.scheduledTime);
+  },
   async fetch(request, env) {
     const url = new URL(request.url);
     if (request.method === "GET" && url.pathname === "/") return renderPage(env.DB, url);
     if ((request.method === "GET" || request.method === "HEAD") && Object.hasOwn(assets.audio, url.pathname)) {
       return serveAudio(request, assets.audio[url.pathname]);
     }
-    if (request.method === "POST" && url.pathname === "/mcp") return handleMcp(request, env.DB);
+    if (sitesMcpEnabled && request.method === "POST" && url.pathname === "/mcp") return handleMcp(request, env.DB);
     return new Response("Not found", { status: 404 });
   },
 };

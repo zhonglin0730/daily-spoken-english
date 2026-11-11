@@ -1,0 +1,32 @@
+{
+  "name": "daily-spoken-english",
+  "main": "dist/server/cloudflare.js",
+  "compatibility_date": "2026-11-11",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "english.2020453.xyz", "custom_domain": true }
+  ],
+  "build": {
+    "command": "npm run build"
+  },
+  "ai": {
+    "binding": "AI"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "daily-spoken-english",
+      "migrations_dir": "drizzle",
+      "database_id": "5f75ca3d-1418-4d41-8d5c-c29d52b67c03"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "0 23 * * *"
+    ]
+  },
+  "observability": {
+    "enabled": true
+  }
+}

@@ -28,10 +28,12 @@ const preview = {
     phrases: toDataUrl(audio["/media/hotel-phrases.wav"]),
   },
 };
+const bundle = `const assets = ${JSON.stringify({ template, seed, audio })};\n`;
 
 await Promise.all(["dist/server/", "dist/.openai/", "dist/drizzle/"].map((name) => mkdir(path(name), { recursive: true })));
 await Promise.all([
-  writeFile(path("dist/server/index.js"), `const assets = ${JSON.stringify({ template, seed, audio })};\n${worker}`),
+  writeFile(path("dist/server/index.js"), `${bundle}const sitesMcpEnabled = true;\n${worker}`),
+  writeFile(path("dist/server/cloudflare.js"), `${bundle}const sitesMcpEnabled = false;\n${worker}`),
   writeFile(path("dist/preview.html"), template.replace("PAGE_DATA", () => JSON.stringify(preview).replaceAll("<", "\\u003c"))),
   copyFile(path(".openai/hosting.json"), path("dist/.openai/hosting.json")),
   copyFile(path("drizzle/0000_daily_lessons.sql"), path("dist/drizzle/0000_daily_lessons.sql")),
