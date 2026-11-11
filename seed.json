@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-11",
+  "category": "travel",
+  "title": "酒店入住",
+  "goal": "听清退房时间，用一句英语确认。",
+  "listen": {
+    "prompt": "前台说了一个时间。先听，再开口确认你听到的退房时间。",
+    "en": "Checkout is at eleven. If you need more time, just let us know.",
+    "zh": "退房时间是 11 点。如果需要更多时间，告诉我们就好。"
+  },
+  "phrases": [
+    { "en": "Hi, I have a reservation.", "zh": "你好，我有预订。" },
+    { "en": "What time is checkout?", "zh": "几点退房？" },
+    { "en": "Sorry, could you say that again?", "zh": "不好意思，您能再说一遍吗？" },
+    { "en": "Did you say ten?", "zh": "您是说十点吗？" }
+  ],
+  "speak": {
+    "prompt": "换到火车站。工作人员说站台改了，你没听清。先请对方重复，再确认是不是 5 号站台。",
+    "sample": "Sorry, could you say that again? Did you say platform five?"
+  }
+}

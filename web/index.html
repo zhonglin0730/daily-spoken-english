@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title>英语随手练</title>
+  <style>/* PAGE_STYLES */</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <span class="brand">英语随手练</span>
+      <a id="archive-link" class="archive-link" href="#archive" hidden>往期课程</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article aria-labelledby="lesson-title">
+      <div class="intro">
+        <p class="lesson-meta"><time id="lesson-date"></time><span class="dot" aria-hidden="true"></span><span id="category"></span><span class="dot" aria-hidden="true"></span><span>约 5 分钟</span></p>
+        <h1 id="lesson-title"></h1>
+        <p class="goal" id="lesson-goal"></p>
+      </div>
+
+      <section class="listen" aria-labelledby="listen-title">
+        <h2 id="listen-title">先听</h2>
+        <p id="listen-prompt"></p>
+        <div class="player">
+          <button type="button" id="play-listen" class="button primary play">播放听力</button>
+          <label class="rate" for="rate">语速
+            <select id="rate">
+              <option value="1">正常</option>
+              <option value="0.75">慢速</option>
+            </select>
+          </label>
+        </div>
+        <p class="feedback" id="listen-feedback" role="status"></p>
+        <details>
+          <summary>核对原文</summary>
+          <p class="english" lang="en" id="listen-en"></p>
+          <p class="translation" id="listen-zh"></p>
+        </details>
+      </section>
+
+      <section class="block" aria-labelledby="repeat-title">
+        <div class="section-heading">
+          <h2 id="repeat-title">跟读</h2>
+          <button type="button" id="play-phrases" class="button secondary play">播放短句</button>
+        </div>
+        <p class="instruction">听一句，暂停，自己说一句。</p>
+        <p class="feedback" id="phrases-feedback" role="status"></p>
+        <ul class="phrases" id="phrases"></ul>
+      </section>
+
+      <section class="block" aria-labelledby="speak-title">
+        <h2 id="speak-title">换个场景开口</h2>
+        <p id="speak-prompt"></p>
+        <details>
+          <summary>说完再看参考</summary>
+          <p class="english" lang="en" id="speak-sample"></p>
+        </details>
+      </section>
+
+      <div class="finish">
+        <button type="button" id="complete" class="button secondary" aria-pressed="false">标记已练</button>
+        <p id="completion-feedback" class="feedback" role="status"></p>
+      </div>
+    </article>
+
+    <section class="block archive" id="archive" aria-labelledby="archive-title" hidden>
+      <h2 id="archive-title">往期课程</h2>
+      <ul id="archive-items"></ul>
+    </section>
+    <noscript><p>请在浏览器启用 JavaScript 后打开课程。</p></noscript>
+  </main>
+  <script type="application/json" id="page-data">PAGE_DATA</script>
+  <script>/* PAGE_SCRIPT */</script>
+</body>
+</html>
