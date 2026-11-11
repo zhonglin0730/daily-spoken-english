@@ -8,12 +8,30 @@
     "en": "Checkout is at eleven. If you need more time, just let us know.",
     "zh": "退房时间是 11 点。如果需要更多时间，告诉我们就好。"
   },
+  "dialogue": [
+    { "speaker": "other", "en": "Good evening. How can I help you?", "zh": "晚上好，有什么可以帮您？" },
+    { "speaker": "you", "en": "Hi, I have a reservation under the name Chen.", "zh": "你好，我有预订，姓陈。" },
+    { "speaker": "other", "en": "I found it. You're staying for two nights, right?", "zh": "找到了。您住两晚，对吗？" },
+    { "speaker": "you", "en": "Yes, that's right. What time is checkout?", "zh": "对。几点退房？" },
+    { "speaker": "other", "en": "Checkout is at eleven in the morning.", "zh": "退房时间是上午十一点。" },
+    { "speaker": "you", "en": "Sorry, did you say eleven?", "zh": "不好意思，您是说十一点吗？" },
+    { "speaker": "other", "en": "Yes, eleven. Here's your room key.", "zh": "是的，十一点。这是您的房卡。" },
+    { "speaker": "you", "en": "Great, thank you.", "zh": "好的，谢谢。" }
+  ],
   "phrases": [
     { "en": "Hi, I have a reservation.", "zh": "你好，我有预订。" },
     { "en": "What time is checkout?", "zh": "几点退房？" },
     { "en": "Sorry, could you say that again?", "zh": "不好意思，您能再说一遍吗？" },
-    { "en": "Did you say ten?", "zh": "您是说十点吗？" }
+    { "en": "Did you say ten?", "zh": "您是说十点吗？" },
+    { "en": "It's under the name Chen.", "zh": "预订用的是陈这个姓。" },
+    { "en": "I'm staying for two nights.", "zh": "我住两晚。" }
   ],
+  "passage": {
+    "title": "我到了酒店",
+    "en": "I arrived at the hotel in the evening. I told the front desk my name and said I had a reservation for two nights. I asked what time checkout was. I didn't catch the time at first, so I asked again. The receptionist said eleven in the morning and gave me my room key.",
+    "zh": "我晚上到了酒店。我告诉前台我的名字，说我预订了两晚。我问几点退房。我一开始没听清，就又问了一遍。前台说是上午十一点，然后给了我房卡。",
+    "recall": "跟读一遍，收起短文，再按「到酒店 → 确认预订 → 问退房时间 → 拿到房卡」复述。"
+  },
   "speak": {
     "prompt": "换到火车站。工作人员说站台改了，你没听清。先请对方重复，再确认是不是 5 号站台。",
     "sample": "Sorry, could you say that again? Did you say platform five?"

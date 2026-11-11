@@ -4,31 +4,26 @@ const root = new URL("../", import.meta.url);
 const path = (name) => new URL(name, root);
 const read = (name) => readFile(path(name), "utf8");
 
-const [html, css, js, seedText, worker, listening, phrases] = await Promise.all([
+const mediaNames = { listen: "listening", dialogue: "dialogue", phrases: "phrases-v2", passage: "passage" };
+const [html, css, js, seedText, worker, ...clips] = await Promise.all([
   read("web/index.html"),
   read("web/styles.css"),
   read("web/app.js"),
   read("seed.json"),
   read("worker/index.js"),
-  readFile(path("media/hotel-listening.wav")),
-  readFile(path("media/hotel-phrases.wav")),
+  ...Object.values(mediaNames).map((name) => readFile(path(`media/hotel-${name}.wav`))),
 ]);
 const seed = JSON.parse(seedText);
 const template = html.replace("/* PAGE_STYLES */", () => css).replace("/* PAGE_SCRIPT */", () => js);
-const audio = {
-  "/media/hotel-listening.wav": listening.toString("base64"),
-  "/media/hotel-phrases.wav": phrases.toString("base64"),
-};
-const toDataUrl = (bytes) => `data:audio/wav;base64,${bytes}`;
+const seedMedia = Object.fromEntries(Object.entries(mediaNames).map(([key, name]) => [key, `/media/hotel-${name}.wav`]));
+const audio = Object.fromEntries(Object.values(seedMedia).map((url, i) => [url, clips[i].toString("base64")]));
 const preview = {
   lesson: seed,
-  archive: [],
-  media: {
-    listen: toDataUrl(audio["/media/hotel-listening.wav"]),
-    phrases: toDataUrl(audio["/media/hotel-phrases.wav"]),
-  },
+  course: [{ date: seed.date, title: seed.title }],
+  current: 0,
+  media: Object.fromEntries(Object.entries(seedMedia).map(([key, url]) => [key, `data:audio/wav;base64,${audio[url]}`])),
 };
-const bundle = `const assets = ${JSON.stringify({ template, seed, audio })};\n`;
+const bundle = `const assets = ${JSON.stringify({ template, seed, seedMedia, audio })};\n`;
 
 await Promise.all(["dist/server/", "dist/.openai/", "dist/drizzle/"].map((name) => mkdir(path(name), { recursive: true })));
 await Promise.all([

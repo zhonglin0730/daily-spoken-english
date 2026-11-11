@@ -11,17 +11,21 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <span class="brand">英语随手练</span>
-      <a id="archive-link" class="archive-link" href="#archive" hidden>往期课程</a>
     </div>
   </header>
 
   <main class="container">
     <article aria-labelledby="lesson-title">
       <div class="intro">
-        <p class="lesson-meta"><time id="lesson-date"></time><span class="dot" aria-hidden="true"></span><span id="category"></span><span class="dot" aria-hidden="true"></span><span>约 5 分钟</span></p>
+        <p class="lesson-meta"><span id="lesson-number"></span><span class="dot" aria-hidden="true"></span><span id="category"></span><span class="dot" aria-hidden="true"></span><span id="lesson-duration"></span></p>
         <h1 id="lesson-title"></h1>
         <p class="goal" id="lesson-goal"></p>
       </div>
+
+      <details class="course-directory" id="course-directory">
+        <summary id="course-title">课程目录</summary>
+        <ol id="course-items"></ol>
+      </details>
 
       <section class="listen" aria-labelledby="listen-title">
         <h2 id="listen-title">先听</h2>
@@ -43,6 +47,16 @@
         </details>
       </section>
 
+      <section class="block" id="dialogue" aria-labelledby="dialogue-title" hidden>
+        <div class="section-heading">
+          <h2 id="dialogue-title">情境对话</h2>
+          <button type="button" id="play-dialogue" class="button secondary play">播放对话</button>
+        </div>
+        <p class="instruction">先听一遍，再扮演「你」说一遍。</p>
+        <p class="feedback" id="dialogue-feedback" role="status"></p>
+        <ol class="phrases" id="dialogue-lines"></ol>
+      </section>
+
       <section class="block" aria-labelledby="repeat-title">
         <div class="section-heading">
           <h2 id="repeat-title">跟读</h2>
@@ -51,6 +65,20 @@
         <p class="instruction">听一句，暂停，自己说一句。</p>
         <p class="feedback" id="phrases-feedback" role="status"></p>
         <ul class="phrases" id="phrases"></ul>
+      </section>
+
+      <section class="block" id="passage" aria-labelledby="passage-title" hidden>
+        <div class="section-heading">
+          <h2 id="passage-title">短文背诵</h2>
+          <button type="button" id="play-passage" class="button secondary play">播放短文</button>
+        </div>
+        <p id="passage-recall"></p>
+        <p class="feedback" id="passage-feedback" role="status"></p>
+        <details open>
+          <summary id="passage-heading">查看短文</summary>
+          <p class="english" lang="en" id="passage-en"></p>
+          <p class="translation" id="passage-zh"></p>
+        </details>
       </section>
 
       <section class="block" aria-labelledby="speak-title">
@@ -66,12 +94,12 @@
         <button type="button" id="complete" class="button secondary" aria-pressed="false">标记已练</button>
         <p id="completion-feedback" class="feedback" role="status"></p>
       </div>
+      <nav class="lesson-nav" aria-label="课程切换" id="lesson-nav" hidden>
+        <a id="previous-lesson" class="button secondary" hidden>上一课</a>
+        <a id="next-lesson" class="button primary" hidden>下一课</a>
+      </nav>
     </article>
 
-    <section class="block archive" id="archive" aria-labelledby="archive-title" hidden>
-      <h2 id="archive-title">往期课程</h2>
-      <ul id="archive-items"></ul>
-    </section>
     <noscript><p>请在浏览器启用 JavaScript 后打开课程。</p></noscript>
   </main>
   <script type="application/json" id="page-data">PAGE_DATA</script>

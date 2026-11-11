@@ -1,20 +1,35 @@
+const root = document.documentElement;
+
+function fitVirtualPhoneViewport() {
+  const width = root.clientWidth;
+  const view = window.visualViewport;
+  const fittedWidth = view && Math.abs(view.width - width) < width * 0.05 ? width * view.scale : width;
+  const deviceWidth = Math.min(window.screen.width || width, fittedWidth);
+  // Android desktop-site mode can fit a desktop layout viewport onto a phone.
+  const needsCompensation = navigator.maxTouchPoints > 0 && width >= 650
+    && deviceWidth > 0 && deviceWidth < 650 && width / deviceWidth >= 1.2;
+  root.classList.toggle("virtual-phone", needsCompensation);
+  if (needsCompensation) root.style.setProperty("--phone-scale", width / deviceWidth);
+  else root.style.removeProperty("--phone-scale");
+}
+
+fitVirtualPhoneViewport();
+window.addEventListener("resize", fitVirtualPhoneViewport);
+
 const byId = (id) => document.getElementById(id);
-const { lesson, archive, media } = JSON.parse(byId("page-data").textContent);
+const { lesson, course, current, media } = JSON.parse(byId("page-data").textContent);
 const speed = byId("rate");
 const complete = byId("complete");
 const completionKey = `daily-english:${lesson.date}`;
 const speech = window.speechSynthesis;
 let playback;
 
-function formatDate(date) {
-  const [, month, day] = date.split("-");
-  return `${Number(month)} 月 ${Number(day)} 日`;
-}
+const lessonUrl = (index) => `/?lesson=${index + 1}`;
 
 document.title = `${lesson.title} · 英语随手练`;
-byId("lesson-date").dateTime = lesson.date;
-byId("lesson-date").textContent = formatDate(lesson.date);
+byId("lesson-number").textContent = `第 ${current + 1} 课`;
 byId("category").textContent = lesson.category === "work" ? "工作" : "旅行";
+byId("lesson-duration").textContent = lesson.passage ? "约 10 分钟" : "约 5 分钟";
 byId("lesson-title").textContent = lesson.title;
 byId("lesson-goal").textContent = lesson.goal;
 byId("listen-prompt").textContent = lesson.listen.prompt;
@@ -23,31 +38,57 @@ byId("listen-zh").textContent = lesson.listen.zh;
 byId("speak-prompt").textContent = lesson.speak.prompt;
 byId("speak-sample").textContent = lesson.speak.sample;
 
-for (const phrase of lesson.phrases) {
+function addBilingualLine(list, line, speaker) {
   const item = document.createElement("li");
+  if (speaker) {
+    const label = document.createElement("p");
+    label.className = "translation";
+    label.textContent = speaker;
+    item.append(label);
+  }
   const english = document.createElement("p");
   english.className = "english";
   english.lang = "en";
-  english.textContent = phrase.en;
+  english.textContent = line.en;
   const translation = document.createElement("p");
   translation.className = "translation";
-  translation.textContent = phrase.zh;
+  translation.textContent = line.zh;
   item.append(english, translation);
-  byId("phrases").append(item);
+  list.append(item);
 }
 
-for (const item of archive) {
-  if (item.date === lesson.date) continue;
+for (const phrase of lesson.phrases) addBilingualLine(byId("phrases"), phrase);
+if (lesson.dialogue?.length) {
+  byId("dialogue").hidden = false;
+  for (const line of lesson.dialogue) {
+    addBilingualLine(byId("dialogue-lines"), line, line.speaker === "you" ? "你" : "对方");
+  }
+}
+if (lesson.passage) {
+  byId("passage").hidden = false;
+  byId("passage-heading").textContent = lesson.passage.title;
+  byId("passage-en").textContent = lesson.passage.en;
+  byId("passage-zh").textContent = lesson.passage.zh;
+  byId("passage-recall").textContent = lesson.passage.recall;
+}
+
+byId("course-title").textContent = `课程目录（${course.length} 节）`;
+for (const [index, item] of course.entries()) {
   const li = document.createElement("li");
   const link = document.createElement("a");
-  link.href = `/?date=${encodeURIComponent(item.date)}`;
-  link.textContent = `${formatDate(item.date)} · ${item.title}`;
+  link.href = index === current ? "#lesson-title" : lessonUrl(index);
+  link.textContent = `第 ${index + 1} 课 · ${item.title}`;
+  if (index === current) link.setAttribute("aria-current", "page");
   li.append(link);
-  byId("archive-items").append(li);
+  byId("course-items").append(li);
 }
-if (byId("archive-items").childElementCount) {
-  byId("archive").hidden = false;
-  byId("archive-link").hidden = false;
+for (const [id, index] of [["previous-lesson", current - 1], ["next-lesson", current + 1]]) {
+  if (index < 0 || index >= course.length) continue;
+  const link = byId(id);
+  link.href = lessonUrl(index);
+  link.setAttribute("aria-label", `${link.textContent}，${course[index].title}`);
+  link.hidden = false;
+  byId("lesson-nav").hidden = false;
 }
 
 function displayPlayback(track, state) {
@@ -133,6 +174,10 @@ function addPlayback(buttonId, feedbackId, text, source) {
 
 addPlayback("play-listen", "listen-feedback", lesson.listen.en, media?.listen);
 addPlayback("play-phrases", "phrases-feedback", lesson.phrases.map((phrase) => phrase.en).join(" "), media?.phrases);
+if (lesson.dialogue?.length) {
+  addPlayback("play-dialogue", "dialogue-feedback", lesson.dialogue.map((line) => line.en).join(" "), media?.dialogue);
+}
+if (lesson.passage) addPlayback("play-passage", "passage-feedback", lesson.passage.en, media?.passage);
 speed.addEventListener("change", () => {
   if (playback?.audio) playback.audio.playbackRate = Number(speed.value);
   else if (playback) stopPlayback();
