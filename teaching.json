@@ -1,0 +1,182 @@
+{
+  "2026-11-11": {
+    "grammar": {
+      "title": "用 What time 问时间",
+      "example": "What time is checkout?",
+      "explanation": "What time + is + 事项？用来问这件事是几点。checkout 在这里指退房时间。",
+      "question": "问「早餐几点？」",
+      "answer": "What time is breakfast?"
+    },
+    "connectedSpeech": {
+      "sentence": "I have a reservation.",
+      "focus": "have‿a",
+      "instruction": "have 末尾的 /v/ 接上 a 的轻音 /ə/。两个词中间不停，reservation 读得更清楚。",
+      "practice": "先连说 have a，再说 have a reservation。最后把 I 加回去。"
+    }
+  },
+  "2026-11-12": {
+    "grammar": {
+      "title": "用 What kind of 问种类",
+      "example": "What kind of software do you work on?",
+      "explanation": "What kind of + 名词询问类别。一般现在时问你平时做什么时，用 do you + 动词原形。work on 表示从事某项工作。",
+      "question": "用同样结构问「你平时参与哪类项目？」",
+      "answer": "What kind of projects do you work on?"
+    },
+    "connectedSpeech": {
+      "sentence": "What kind of software do you work on?",
+      "focus": "kind‿of",
+      "instruction": "kind 的尾音 /d/ 接上 of。of 在这个意群里通常轻读 /əv/，kind 和 software 更突出。",
+      "practice": "先连说 kind of，再接 kind of software。最后连成整句。"
+    }
+  },
+  "2026-11-13": {
+    "grammar": {
+      "title": "用 need to 表示需要做什么",
+      "example": "Do I need to change trains to get to the airport?",
+      "explanation": "need to 后接动词原形。Do I need to …? 用来确认某一步是不是必须做。",
+      "question": "问「我需要买另一张票吗？」",
+      "answer": "Do I need to buy another ticket?"
+    },
+    "connectedSpeech": {
+      "sentence": "Change at Central Station and take the airport train from platform three.",
+      "focus": "change‿at",
+      "instruction": "change 的 /dʒ/ 接 at 的元音，两个词之间不停顿。Central Station 放在同一个意群里。",
+      "practice": "先说 change at，再接 Central Station。然后把后半句接上，最后换一个站名再说。"
+    }
+  },
+  "2026-11-14": {
+    "grammar": {
+      "title": "用时间词组织日会汇报",
+      "example": "Yesterday, I finished the login screen and started testing it.",
+      "explanation": "已经完成的昨天事项用一般过去时，如 finished。说今天打算做什么时，可用 I'll + 动词原形。",
+      "question": "用两句英语说「昨天我更新了搜索页。今天我会测试它。」",
+      "answer": "Yesterday, I updated the search page. Today, I'll test it."
+    },
+    "connectedSpeech": {
+      "sentence": "What are you working on today?",
+      "focus": "working‿on",
+      "instruction": "working 末尾 /ŋ/ 是鼻音。保持鼻音，直接过渡到 on 的元音，把 working on 一起说。",
+      "practice": "先练 working on，再加 today。整句保持同一个节奏。"
+    }
+  },
+  "2026-11-15": {
+    "grammar": {
+      "title": "用 Could you 礼貌提出要求",
+      "example": "Could you make them less spicy?",
+      "explanation": "Could you + 动词原形可用于礼貌请求。less + 形容词表示程度低一些。这里 them 指前面说到的面。",
+      "question": "问「能把咖喱做得没那么辣吗？」",
+      "answer": "Could you make the curry less spicy?"
+    },
+    "connectedSpeech": {
+      "sentence": "Could you make them less spicy?",
+      "focus": "could‿you",
+      "instruction": "日常语速里，could 的 /d/ 和 you 的 /j/ 可以合成接近 /dʒ/ 的声音。you 说轻一点，把重音放在 less spicy。",
+      "practice": "先慢说 could you，再连起来说。最后一口气说 Could you make them less spicy?"
+    }
+  },
+  "2026-11-16": {
+    "grammar": {
+      "title": "间接问句用陈述语序",
+      "example": "Can you explain what the status field means?",
+      "explanation": "直接问句可说 What does the status field mean?。放进 Can you explain …? 后，用 what + 主语 + 动词，即 what the status field means。",
+      "question": "请同事解释 data 字段是什么意思。",
+      "answer": "Can you explain what the data field means?"
+    },
+    "connectedSpeech": {
+      "sentence": "Return an empty array in the data field.",
+      "focus": "an‿empty",
+      "instruction": "an 通常轻读 /ən/。让 an 的 /n/ 直接接上 empty 开头的元音，empty 的第一个音节读清楚。",
+      "practice": "先练 an empty，再接 an empty array，最后说完整句。"
+    }
+  },
+  "2026-11-17": {
+    "grammar": {
+      "title": "用 Could you … again? 请对方重复",
+      "example": "Sorry, could you say the gate number again?",
+      "explanation": "Could you + 动词原形用来礼貌提出请求。again 放在句末，表示请对方再做一次。",
+      "question": "请对方再说一次站台号码。",
+      "answer": "Could you say the platform number again?"
+    },
+    "connectedSpeech": {
+      "sentence": "Should I wait at the new gate?",
+      "focus": "wait‿at",
+      "instruction": "让 wait 结尾的 /t/ 紧接 at 的元音，不在两词之间停顿。在一些美式口音里，这个 /t/ 会变成很轻的一下舌尖音。",
+      "practice": "先说 wait at，再加 the new gate。用普通 /t/ 连上也可以。"
+    }
+  },
+  "2026-11-18": {
+    "grammar": {
+      "title": "用过去时说明已发生的故障",
+      "example": "The GET request to /users failed in our test environment.",
+      "explanation": "用 failed 或 returned 来报告已发生的结果。用 I'll + 动词原形交代接下来要检查什么。",
+      "question": "说「这个请求返回了 400，我会检查请求参数。」",
+      "answer": "The request returned a 400 error. I'll check the request parameters."
+    },
+    "connectedSpeech": {
+      "sentence": "The GET request to /users failed in our test environment.",
+      "focus": "failed‿in",
+      "instruction": "failed 的 /d/ 直接接 in 的 /ɪ/。让尾音滑到下一个词，重音仍放在 failed。",
+      "practice": "先说 failed in，再接 failed in our test environment。"
+    }
+  },
+  "2026-11-19": {
+    "grammar": {
+      "title": "用 When should I expect 问大概何时",
+      "example": "When should I expect an update?",
+      "explanation": "When should I expect + 名词？用来询问预计什么时候能收到某样东西。update 在这里作名词，表示新消息。",
+      "question": "问「我大概什么时候能收到电话？」",
+      "answer": "When should I expect a call?"
+    },
+    "connectedSpeech": {
+      "sentence": "When should I expect an update?",
+      "focus": "an‿update",
+      "instruction": "an 的 /n/ 直接接 update 的元音。an 轻读，名词 update 的第一音节更重。",
+      "practice": "先连说 an update，再接 expect an update，最后说整句。"
+    }
+  },
+  "2026-11-20": {
+    "grammar": {
+      "title": "用 Can we …? 提议共同安排",
+      "example": "Can we review the login changes tomorrow?",
+      "explanation": "Can we + 动词原形可以提出一起做什么。把 tomorrow 或 on Thursday 放句尾，说清时间。",
+      "question": "提议周四一起看搜索功能的改动。",
+      "answer": "Can we review the search changes on Thursday?"
+    },
+    "connectedSpeech": {
+      "sentence": "Should we also look at the tests?",
+      "focus": "look‿at",
+      "instruction": "look 结尾的 /k/ 接 at 的元音。at 在这里可以轻读 /ət/，让 tests 听起来更突出。",
+      "practice": "先说 look at，再接 look at the tests。把 tests 换成 the changes 再练。"
+    }
+  },
+  "2026-11-21": {
+    "grammar": {
+      "title": "用 the one 指代前面提过的对象",
+      "example": "I mean the one on Main Street.",
+      "explanation": "已知是在说哪一类地点时，the one 可以指其中具体的一家。用 on + 街道说明你指哪家。",
+      "question": "向司机澄清「我说的是河边街那家。」",
+      "answer": "I mean the one on River Street."
+    },
+    "connectedSpeech": {
+      "sentence": "I mean the one on Main Street.",
+      "focus": "one‿on",
+      "instruction": "one 末尾的 /n/ 接上 on 的元音。中间不断开，把 Main Street 读清楚。",
+      "practice": "先连说 one on，再加 Main Street。接着换一条街名复述。"
+    }
+  },
+  "2026-11-22": {
+    "grammar": {
+      "title": "用 by 表达截止时间",
+      "example": "I'll share a draft by Thursday.",
+      "explanation": "I'll + 动词原形表示接下来会做什么。by Thursday 表示最迟周四。on Thursday 则指在周四当天。",
+      "question": "用英语说「我最迟周三发测试用例。」",
+      "answer": "I'll share the test cases by Wednesday."
+    },
+    "connectedSpeech": {
+      "sentence": "Shall we check in on Friday morning?",
+      "focus": "check‿in",
+      "instruction": "check 末尾的 /k/ 直接接上 in 的 /ɪ/。把 check in 当一个意群，Friday morning 作为第二个意群。",
+      "practice": "先说 check in，再接 check in on Friday morning，最后补上 Shall we。"
+    }
+  }
+}

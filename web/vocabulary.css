@@ -1,0 +1,31 @@
+.vocab-hint { color: var(--muted); font-size: .875rem; }
+.vocab-word { cursor: pointer; -webkit-touch-callout: none; user-select: none; }
+[data-color="yellow"] { background: #ffe59a; color: #232313; }
+[data-color="green"] { background: #c6efc5; color: #152b1d; }
+[data-color="blue"] { background: #cce6ff; color: #182943; }
+.vocab-book { padding-inline: .65rem; }
+.vocab-dialog {
+  width: min(100% - 2rem, 28rem);
+  max-height: min(82dvh, 36rem);
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: .85rem;
+  background: var(--light);
+  color: var(--ink);
+  overflow: auto;
+}
+.vocab-dialog::backdrop { background: #10221db0; }
+.vocab-heading, .vocab-search { display: flex; align-items: center; gap: .5rem; }
+.vocab-heading { justify-content: space-between; }
+.vocab-heading h2 { overflow-wrap: anywhere; }
+.vocab-heading button { white-space: nowrap; }
+.vocab-dialog fieldset { margin: .75rem 0; border: 1px solid var(--line); border-radius: .5rem; }
+.vocab-dialog fieldset button { min-width: 2.6rem; min-height: 2.5rem; border: 1px solid var(--line); border-radius: .4rem; }
+.vocab-dialog fieldset button[aria-pressed="true"] { outline: 2px solid var(--forest); }
+.vocab-search { margin: .75rem 0; }
+.vocab-search input { width: 100%; min-width: 0; min-height: 2.75rem; font: inherit; padding: .4rem; }
+.vocab-search button { white-space: nowrap; }
+#vocab-items { padding-left: 0; list-style: none; }
+#vocab-items li { padding-block: .45rem; border-top: 1px solid var(--line); }
+#vocab-items button { margin-right: .45rem; }
+#vocab-status:empty { display: none; }

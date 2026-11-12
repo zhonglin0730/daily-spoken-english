@@ -27,17 +27,30 @@
         <ol id="course-items"></ol>
       </details>
 
+      <label class="rate lesson-rate" for="rate">播放语速
+        <select id="rate">
+          <option value="1">正常 1×</option>
+          <option value="0.8">慢速 0.8×</option>
+        </select>
+      </label>
+
+      <section class="block human-audio" id="human-audio" aria-labelledby="human-title" hidden>
+        <div class="section-heading">
+          <h2 id="human-title">真人例句</h2>
+          <button type="button" id="play-human" class="button secondary play">播放真人</button>
+        </div>
+        <p class="english" lang="en" id="human-en"></p>
+        <p class="translation" id="human-zh"></p>
+        <p class="instruction audio-credit"><a id="human-source"></a> · <a id="human-original"></a> · <a id="human-license"></a></p>
+        <p class="feedback" id="human-feedback" role="status"></p>
+      </section>
+
       <section class="listen" aria-labelledby="listen-title">
         <h2 id="listen-title">先听</h2>
         <p id="listen-prompt"></p>
         <div class="player">
           <button type="button" id="play-listen" class="button primary play">播放听力</button>
-          <label class="rate" for="rate">语速
-            <select id="rate">
-              <option value="1">正常</option>
-              <option value="0.75">慢速</option>
-            </select>
-          </label>
+          <span class="audio-kind" id="lesson-audio-kind"></span>
         </div>
         <p class="feedback" id="listen-feedback" role="status"></p>
         <details>
@@ -50,9 +63,10 @@
       <section class="block" id="dialogue" aria-labelledby="dialogue-title" hidden>
         <div class="section-heading">
           <h2 id="dialogue-title">情境对话</h2>
-          <button type="button" id="play-dialogue" class="button secondary play">播放对话</button>
+          <button type="button" id="play-dialogue" class="button secondary play">朗读对话</button>
         </div>
         <p class="instruction">先听一遍，再扮演「你」说一遍。</p>
+        <p class="instruction audio-credit" id="dialogue-credit" hidden><a id="dialogue-source"></a></p>
         <p class="feedback" id="dialogue-feedback" role="status"></p>
         <ol class="phrases" id="dialogue-lines"></ol>
       </section>
@@ -60,7 +74,7 @@
       <section class="block" aria-labelledby="repeat-title">
         <div class="section-heading">
           <h2 id="repeat-title">跟读</h2>
-          <button type="button" id="play-phrases" class="button secondary play">播放短句</button>
+          <button type="button" id="play-phrases" class="button secondary play">朗读短句</button>
         </div>
         <p class="instruction">听一句，暂停，自己说一句。</p>
         <p class="feedback" id="phrases-feedback" role="status"></p>
@@ -70,9 +84,10 @@
       <section class="block" id="passage" aria-labelledby="passage-title" hidden>
         <div class="section-heading">
           <h2 id="passage-title">短文背诵</h2>
-          <button type="button" id="play-passage" class="button secondary play">播放短文</button>
+          <button type="button" id="play-passage" class="button secondary play">朗读短文</button>
         </div>
         <p id="passage-recall"></p>
+        <p class="instruction audio-credit" id="passage-credit" hidden><a id="passage-source"></a></p>
         <p class="feedback" id="passage-feedback" role="status"></p>
         <details open>
           <summary id="passage-heading">查看短文</summary>
@@ -88,6 +103,34 @@
           <summary>说完再看参考</summary>
           <p class="english" lang="en" id="speak-sample"></p>
         </details>
+      </section>
+
+      <section class="block" id="grammar" aria-labelledby="grammar-title" hidden>
+        <h2 id="grammar-title">课后语法</h2>
+        <h3 id="grammar-topic"></h3>
+        <p class="english" lang="en" id="grammar-example"></p>
+        <p id="grammar-explanation"></p>
+        <p id="grammar-question"></p>
+        <details>
+          <summary>核对参考答案</summary>
+          <p class="english" lang="en" id="grammar-answer"></p>
+        </details>
+      </section>
+
+      <section class="block" id="connected-speech" aria-labelledby="connected-title" hidden>
+        <h2 id="connected-title">连读练习</h2>
+        <p class="english" lang="en" id="connected-sentence"></p>
+        <p class="english connected-focus" lang="en" id="connected-focus"></p>
+        <div class="player" id="linking-player" hidden>
+          <button type="button" class="button secondary play" id="play-linking">播放连读原声</button>
+          <label class="rate lesson-rate" for="linking-rate">播放语速
+            <select id="linking-rate"><option value="1">正常 1×</option><option value="0.8">慢速 0.8×</option></select>
+          </label>
+        </div>
+        <p class="feedback" id="linking-feedback" role="status"></p>
+        <p id="connected-instruction"></p>
+        <p id="connected-practice"></p>
+        <p id="human-linking" hidden><a href="#human-audio">回听真人例句</a> · <strong lang="en" id="human-focus"></strong><span id="human-tip"></span></p>
       </section>
 
       <div class="finish">

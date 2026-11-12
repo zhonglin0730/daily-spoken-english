@@ -1,0 +1,1456 @@
+{
+  "2026-11-11": {
+    "listenPrompt": "听房客要住到星期几，以及前台报的是税前还是税后价格。",
+    "lesson": {
+      "title": "酒店入住",
+      "category": "travel",
+      "goal": "跟前台说明住到哪天、想要什么房间，并听懂报出的房价。",
+      "dialogue": [
+        {
+          "speaker": "other",
+          "en": "Hi, good afternoon. How can I assist you?",
+          "zh": "您好，下午好。有什么可以帮您？"
+        },
+        {
+          "speaker": "you",
+          "en": "Hi, how’s it going? I’d like to make a reservation for today until Thursday. Do you have any vacancies?",
+          "zh": "您好。我想订一间从今天住到周四的房间。还有空房吗？"
+        },
+        {
+          "speaker": "other",
+          "en": "So, what kind of room are you looking for? Are you looking for king or double queen? Or we have king suite as well.",
+          "zh": "您想要什么房型？特大床房还是两张大床的房间？我们也有特大床套房。"
+        },
+        {
+          "speaker": "you",
+          "en": "I just need something with a simple bed. But I’m hoping to have a room with a nice view.",
+          "zh": "有张普通的床就行，不过我希望房间的景色好一点。"
+        },
+        {
+          "speaker": "other",
+          "en": "Okay, the thing is, yeah, right now we are in the middle of the city, but I tried to find a nice room for a nice view and quiet room. Is it important to be far away from the elevator?",
+          "zh": "好的。我们在市中心，不过我尽力找了一间景色好又安静的房间。远离电梯对您重要吗？"
+        },
+        {
+          "speaker": "you",
+          "en": "It’s better if I’m not near the elevator.",
+          "zh": "离电梯远一点更好。"
+        },
+        {
+          "speaker": "other",
+          "en": "Okay, so let’s look up our occupancy for tonight. And you said, what’s your departure date going to be?",
+          "zh": "好的，我们查一下今晚的房态。您刚说打算哪天离店？"
+        },
+        {
+          "speaker": "you",
+          "en": "So, today, Monday, until Thursday.",
+          "zh": "从今天周一住到周四。"
+        },
+        {
+          "speaker": "other",
+          "en": "Okay, okay. So our rate for tonight is, it looks like $219 before tax. Is it okay for you if I go ahead and make your reservation?",
+          "zh": "好的，今晚的价格看起来是税前 219 美元。现在帮您订下来可以吗？"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "I’d like to make a reservation.",
+          "zh": "我想订房。"
+        },
+        {
+          "en": "Do you have any vacancies?",
+          "zh": "还有空房吗？"
+        },
+        {
+          "en": "I’d prefer a quiet room.",
+          "zh": "我想要一间安静的房间。"
+        },
+        {
+          "en": "Is that before tax?",
+          "zh": "这是税前价吗？"
+        },
+        {
+          "en": "What time is checkout?",
+          "zh": "几点退房？"
+        }
+      ],
+      "passage": {
+        "title": "抵达酒店的前台",
+        "en": "Imagine that you have just arrived at a hotel after a tiring seven-hour overnight flight. At the front desk, the staff person welcomes you, gives you a warm smile, confirms your reservation quickly, and hands you your room key. They tell you the complimentary breakfast is still being served in the dining room.",
+        "zh": "想象一下，你坐了七小时的红眼航班，拖着疲惫的身体刚到酒店。前台人员热情地微笑着欢迎你，很快确认了你的预订，然后把房间钥匙递给你。前台还告诉你，餐厅仍在供应免费早餐。",
+        "recall": "按「到达、确认预订、给钥匙、告知早餐」的顺序背诵。"
+      },
+      "speak": {
+        "prompt": "你想订一间住到周六的安静客房。问还有没有房，并确认退房时间。",
+        "sample": "I’d like a quiet room until Saturday. Do you have any rooms available? What time is checkout?"
+      },
+      "grammar": {
+        "title": "用 I’d like to 礼貌地提出要求",
+        "example": "I’d like to make a reservation for today until Thursday.",
+        "explanation": "I’d like to 后接动词原形。酒店订房时，用 until + 日期说明住到哪天。",
+        "question": "说「我想订一间住到周日的房间。」",
+        "answer": "I’d like to book a room until Sunday."
+      },
+      "connectedSpeech": {
+        "sentence": "I’d like to make a reservation for today until Thursday.",
+        "focus": "make‿a",
+        "instruction": "make 的尾音 /k/ 接上 a 的轻音 /ə/，紧接 reservation。",
+        "practice": "先说 make a，再加 reservation，最后连成整句。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/01-hotel-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/learn-english-for-a-job-in-hotels/4947339.html",
+        "credit": "VOA Learning English · Alice Bryant、Mona Faal"
+      },
+      "passage": {
+        "src": "/recordings/01-hotel-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/learn-english-for-a-job-in-hotels/4947339.html",
+        "credit": "VOA Learning English · Alice Bryant、Mona Faal"
+      },
+      "linking": {
+        "src": "/recordings/01-hotel-linking.mp3"
+      }
+    }
+  },
+  "2026-11-12": {
+    "listenPrompt": "听完整段对话。对方先问职业，接着追问了哪两件事？",
+    "lesson": {
+      "goal": "听懂对方怎么问职业和工作年限，再用两三句介绍你的 Java 工作。",
+      "dialogue": [
+        {
+          "speaker": "other",
+          "en": "What do you do for a living?",
+          "zh": "你是做什么工作的？"
+        },
+        {
+          "speaker": "you",
+          "en": "I run an arts program for teenagers.",
+          "zh": "我负责一个面向青少年的艺术项目。"
+        },
+        {
+          "speaker": "other",
+          "en": "Nice! How long have you been doing that?",
+          "zh": "不错！你做这个多久了？"
+        },
+        {
+          "speaker": "you",
+          "en": "For about five years now.",
+          "zh": "到现在大约五年了。"
+        },
+        {
+          "speaker": "other",
+          "en": "Where do you work?",
+          "zh": "你在哪儿工作？"
+        },
+        {
+          "speaker": "you",
+          "en": "At the city's arts and culture division.",
+          "zh": "在市里的艺术与文化部门。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "What do you do for a living?",
+          "zh": "你是做什么工作的？"
+        },
+        {
+          "en": "How long have you been doing that?",
+          "zh": "你做这个多久了？"
+        },
+        {
+          "en": "Where do you work?",
+          "zh": "你在哪儿工作？"
+        },
+        {
+          "en": "I work as a Java developer.",
+          "zh": "我是一名 Java 开发工程师。"
+        },
+        {
+          "en": "I mainly work on backend services.",
+          "zh": "我主要做后端服务。"
+        }
+      ],
+      "passage": {
+        "title": "设计网站是我的主要收入来源",
+        "en": "Let's say you really like to write and perform songs. But you do not make enough money doing those things to pay for your housing, groceries, and other expenses. So you get a job as a website designer. If someone asks what you do, you could say, “Well, I'm a musician, but designing websites is my bread and butter.”",
+        "zh": "假设你很喜欢写歌和表演，但靠这些赚的钱不够支付房租、食品和其他开销。于是你找了一份网站设计师的工作。如果有人问你是做什么的，你可以说：“我是个音乐人，不过设计网站才是我的主要收入来源。”",
+        "recall": "听完后收起原文，试着背出整段。再用末尾的表达介绍你自己的工作。"
+      },
+      "speak": {
+        "prompt": "面试官问你做什么工作、主要负责什么。先说职位，再用一句话说明一项真实职责。对方追问时，再说实际工作年限。",
+        "sample": "I work as a Java developer. I mainly build backend services and help my team fix issues."
+      },
+      "grammar": {
+        "title": "用 How long 问已经做了多久",
+        "example": "How long have you been doing that?",
+        "explanation": "How long + have you been + 动词的 -ing 形式？用来问一个从过去持续到现在的动作做了多久。回答时可用 for + 一段时间。",
+        "question": "问对方「你用 Java 工作多久了？」",
+        "answer": "How long have you been working with Java?"
+      },
+      "connectedSpeech": {
+        "sentence": "What do you do for a living?",
+        "focus": "for‿a",
+        "instruction": "回听对话第一句。把 for 和 a 放在同一拍里，a 轻读 /ə/，两词之间不停顿。后面的 living 更清楚。",
+        "practice": "先连说 for a，再加 living。用 0.8 倍听整句，最后切回正常速度跟一遍。"
+      },
+      "category": "work"
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/02-job-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/ask-a-teacher-asking-someone-about-their-job/4598657.html",
+        "credit": "VOA Learning English · Alice Bryant"
+      },
+      "passage": {
+        "src": "/recordings/02-job-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/what-is-your-bread-and-butter-/4869868.html",
+        "credit": "VOA Learning English · Anna Matteo"
+      },
+      "linking": {
+        "src": "/recordings/02-job-linking.mp3"
+      }
+    }
+  },
+  "2026-11-13": {
+    "listenPrompt": "听出站后第一个路口往哪边走，以及到公交站后往哪边走。",
+    "lesson": {
+      "title": "问清地铁出口后的路线",
+      "category": "travel",
+      "goal": "听懂出站后怎么走，并用自己的话复述路线。",
+      "dialogue": [
+        {
+          "speaker": "you",
+          "en": "Hi Anna. I’m coming to your apartment. Where is your apartment?",
+          "zh": "你好，安娜。我正要来你家。你家在哪儿？"
+        },
+        {
+          "speaker": "other",
+          "en": "My apartment is near the Columbia Heights Metro.",
+          "zh": "我家在哥伦比亚高地地铁站附近。"
+        },
+        {
+          "speaker": "you",
+          "en": "It is near the Columbia Heights Metro?",
+          "zh": "在哥伦比亚高地地铁站附近吗？"
+        },
+        {
+          "speaker": "other",
+          "en": "Yes. Exit the Metro and turn right. Then at the bus station, turn left. Then walk straight ahead.",
+          "zh": "对。出地铁站后右转，再到公交站左转，然后一直往前走。"
+        },
+        {
+          "speaker": "you",
+          "en": "Okay. Exit Metro, turn right, turn left, then go straight ahead?",
+          "zh": "好的。出地铁站、右转、左转，再一直往前走？"
+        },
+        {
+          "speaker": "other",
+          "en": "Yes. My apartment is near a coffee shop.",
+          "zh": "对。我家在一家咖啡店附近。"
+        },
+        {
+          "speaker": "you",
+          "en": "Okay. See you soon.",
+          "zh": "好，待会儿见。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "Where is the nearest Metro station?",
+          "zh": "最近的地铁站在哪儿？"
+        },
+        {
+          "en": "Exit the Metro and turn right.",
+          "zh": "出地铁站右转。"
+        },
+        {
+          "en": "Walk straight ahead.",
+          "zh": "一直往前走。"
+        },
+        {
+          "en": "Do I need to change trains?",
+          "zh": "我需要换乘吗？"
+        },
+        {
+          "en": "So I turn left at the bus station, right?",
+          "zh": "所以我在公交站左转，对吧？"
+        }
+      ],
+      "passage": {
+        "title": "今天地铁停运了",
+        "en": "Hi there! Summer in Washington, D.C. It’s hot and sunny. I always ride the Metro to work. Riding the Metro is cool and fast, but today it’s closed. So I am walking to work.",
+        "zh": "你好！华盛顿特区的夏天很热，阳光也很足。我总是坐地铁上班。坐地铁凉快又快。不过今天地铁停运了，所以我现在正走路去上班。",
+        "recall": "先说平时怎么上班，再背出今天为什么改为走路。"
+      },
+      "speak": {
+        "prompt": "你要去公交站。对方说出地铁站右转，然后直走。用英语把路线复述一遍。",
+        "sample": "So I exit the Metro, turn right, and then go straight ahead. Is that right?"
+      },
+      "grammar": {
+        "title": "用动词原形给方向",
+        "example": "Exit the Metro and turn right.",
+        "explanation": "指路时可用动词原形直接开头。用 then 表示下一步，用 at + 地点说明在哪里转弯。",
+        "question": "说「在车站左转，然后一直走。」",
+        "answer": "Turn left at the station, then walk straight ahead."
+      },
+      "connectedSpeech": {
+        "sentence": "Then walk straight ahead.",
+        "focus": "straight‿ahead",
+        "instruction": "straight 的 /t/ 和 ahead 开头的轻音 /ə/ 紧挨着说，不在两个词中间停顿。",
+        "practice": "先说 straight ahead，再把 walk 接在前面。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/03-metro-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-10/3285228.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "passage": {
+        "src": "/recordings/03-metro-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-19-when-do-you-start/3357760.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "linking": {
+        "src": "/recordings/03-metro-linking.mp3"
+      }
+    }
+  },
+  "2026-11-14": {
+    "listenPrompt": "听主管提到了哪项变化，以及两人担心这会怎样影响项目。",
+    "lesson": {
+      "title": "复述会议上的决定和影响",
+      "category": "work",
+      "goal": "说清会议讨论了什么、可能影响哪些项目，再练习用英语做工作汇报。",
+      "dialogue": [
+        {
+          "speaker": "you",
+          "en": "Well, the meeting at work today was interesting.",
+          "zh": "嗯，今天的工作会议挺有意思的。"
+        },
+        {
+          "speaker": "other",
+          "en": "That’s one way to describe it. I call it brutal. As soon as the chief said budget cuts, people started circling their wagons.",
+          "zh": "也可以这么说。我觉得挺残酷的。主管一提削减预算，大家就开始抱团自保。"
+        },
+        {
+          "speaker": "you",
+          "en": "That’s understandable. If there’s going to be less money, she might cancel some projects. So everyone wants to protect their people and their projects.",
+          "zh": "可以理解。如果经费减少，她可能会取消一些项目。所以大家都想保护自己的团队和项目。"
+        },
+        {
+          "speaker": "other",
+          "en": "That’s true. But we have to remember that we’re all working for the same business. Our bigger goal as a company is the same.",
+          "zh": "没错。但要记住，我们都在同一家公司工作。公司的大目标是一致的。"
+        },
+        {
+          "speaker": "you",
+          "en": "You’re right. We don’t want to turn into a circular firing squad. Internal disputes are an easy way to destroy the company.",
+          "zh": "你说得对。我们可别陷入互相攻击的内耗。内部争执很容易毁掉公司。"
+        },
+        {
+          "speaker": "other",
+          "en": "Yes. And that is exactly what our competition wants.",
+          "zh": "对，那正是竞争对手希望看到的。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "The meeting was about budget cuts.",
+          "zh": "会议讨论了预算缩减。"
+        },
+        {
+          "en": "She might cancel some projects.",
+          "zh": "她可能会取消一些项目。"
+        },
+        {
+          "en": "That could affect our schedule.",
+          "zh": "这可能影响我们的进度。"
+        },
+        {
+          "en": "I finished the login screen yesterday.",
+          "zh": "我昨天完成了登录页。"
+        },
+        {
+          "en": "I’m waiting for access to the test database.",
+          "zh": "我在等测试数据库的访问权限。"
+        }
+      ],
+      "passage": {
+        "title": "团队遇到压力时为什么会抱团",
+        "en": "Although circle the wagons was first used in the nineteenth century, don’t let it stop you from using it today. You can circle your wagons any time you feel you need to protect the interests of your group, from a sporting event to a political campaign to a project at work. Circling your wagons means you are in a defensive position.",
+        "zh": "尽管 circle the wagons 这个说法最早出现在十九世纪，今天仍然可以用。只要觉得需要维护团队的利益，无论是体育赛事、政治竞选还是工作项目，都可以这么说。这个短语表示团队采取防御姿态。",
+        "recall": "按「旧说法今天也能用、使用场景、短语含义」背诵。"
+      },
+      "speak": {
+        "prompt": "在日会上汇报：昨天完成登录页，今天打算跑测试，访问权限还没开通。",
+        "sample": "Yesterday, I finished the login screen. Today, I’ll run the tests. I’m still waiting for access to the test database."
+      },
+      "grammar": {
+        "title": "用 might 说明可能的结果",
+        "example": "If there’s going to be less money, she might cancel some projects.",
+        "explanation": "if 引出条件，might 后接动词原形，说明条件成立时有可能发生的事。",
+        "question": "说「如果权限今天开不了，我们可能要推迟测试。」",
+        "answer": "If we don’t get access today, we might have to delay testing."
+      },
+      "connectedSpeech": {
+        "sentence": "Well, the meeting at work today was interesting.",
+        "focus": "meeting‿at",
+        "instruction": "meeting 结尾的 /ŋ/ 紧接 at 的轻音 /ət/。保持鼻音到元音的过渡。",
+        "practice": "先说 meeting at，再接 work today，最后听原句跟一遍。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/04-meeting-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/words-and-their-stories-circle-your-wagons/3860350.html",
+        "credit": "VOA Learning English · Anna Matteo、Jonathan Evans"
+      },
+      "passage": {
+        "src": "/recordings/04-meeting-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/words-and-their-stories-circle-your-wagons/3860350.html",
+        "credit": "VOA Learning English · Anna Matteo、Jonathan Evans"
+      },
+      "linking": {
+        "src": "/recordings/04-meeting-linking.mp3"
+      }
+    }
+  },
+  "2026-11-15": {
+    "listenPrompt": "听清卖完的是什么，顾客最后怎么决定。",
+    "lesson": {
+      "title": "点餐时遇到菜品卖完",
+      "category": "travel",
+      "goal": "听懂想点的菜已经卖完，用一句话换菜或去另一家。",
+      "dialogue": [
+        {
+          "speaker": "you",
+          "en": "Hello. I want the chicken dish.",
+          "zh": "你好，我想点那道鸡肉。"
+        },
+        {
+          "speaker": "other",
+          "en": "We’re out of chicken.",
+          "zh": "鸡肉卖完了。"
+        },
+        {
+          "speaker": "you",
+          "en": "You’re out of chicken.",
+          "zh": "你们的鸡肉卖完了。"
+        },
+        {
+          "speaker": "other",
+          "en": "Yep.",
+          "zh": "对。"
+        },
+        {
+          "speaker": "you",
+          "en": "I’ll try another food truck. Thanks.",
+          "zh": "那我去试试另一辆餐车。谢谢。"
+        },
+        {
+          "speaker": "other",
+          "en": "You’re welcome.",
+          "zh": "不客气。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "I’d like the chicken, please.",
+          "zh": "请给我一份鸡肉。"
+        },
+        {
+          "en": "We’re out of chicken.",
+          "zh": "鸡肉卖完了。"
+        },
+        {
+          "en": "I’ll have the beef instead.",
+          "zh": "那我换成牛肉吧。"
+        },
+        {
+          "en": "Could you make it less spicy?",
+          "zh": "能做得没那么辣吗？"
+        },
+        {
+          "en": "I’ll try another food truck.",
+          "zh": "我去试试另一辆餐车。"
+        }
+      ],
+      "passage": {
+        "title": "一小时的午餐时间",
+        "en": "Washington, D.C. has great food from all over the world. Today, I’m having lunch with my boss. Ms. Weaver says we’re going on a trip around the world. But she knows I only have an hour for lunch.",
+        "zh": "华盛顿特区有来自世界各地的美食。今天我和老板吃午饭。韦弗女士说我们要来一次环球旅行，但她明明知道我的午休只有一小时。",
+        "recall": "按「各地的美食、和谁吃饭、老板说了什么、午休多久」的顺序背诵。"
+      },
+      "speak": {
+        "prompt": "虾卖完了。换点牛肉，顺便问能不能少放辣。",
+        "sample": "I’ll have the beef instead. Could you make it less spicy, please?"
+      },
+      "grammar": {
+        "title": "用 be out of 表示用完或卖光",
+        "example": "We’re out of chicken.",
+        "explanation": "主语 + be out of + 物品，表示这种东西已经用完。询问时可以说 Are you out of …?",
+        "question": "说「牛肉卖完了。」",
+        "answer": "We’re out of beef."
+      },
+      "connectedSpeech": {
+        "sentence": "We’re out of chicken.",
+        "focus": "out‿of",
+        "instruction": "out 的尾音紧接 of 的轻读 /əv/。在部分美式口音里，这里的 /t/ 会变成很轻的舌尖音。",
+        "practice": "先说 out of，再接 chicken，最后说整句。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/05-food-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-23-what-do-you-want/3413753.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "passage": {
+        "src": "/recordings/05-food-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-23-what-do-you-want/3413753.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "linking": {
+        "src": "/recordings/05-food-linking.mp3"
+      }
+    }
+  },
+  "2026-11-16": {
+    "listenPrompt": "听清 Anna 说的是哪个技术词，以及 Pete 误听成了什么。",
+    "lesson": {
+      "title": "确认对方说的技术术语",
+      "category": "work",
+      "goal": "听懂同一个词如何被误听，练习在讨论接口时复述并确认需求。",
+      "dialogue": [
+        {
+          "speaker": "you",
+          "en": "Really, Anna? Can you help me?",
+          "zh": "真的吗，安娜？你能帮我吗？"
+        },
+        {
+          "speaker": "other",
+          "en": "Yes, I can. Let me help.",
+          "zh": "可以，我来帮你。"
+        },
+        {
+          "speaker": "you",
+          "en": "Sure, Anna. Maybe you can help me.",
+          "zh": "好的，安娜。也许你能帮我。"
+        },
+        {
+          "speaker": "other",
+          "en": "Can you write code?",
+          "zh": "你会写代码吗？"
+        },
+        {
+          "speaker": "you",
+          "en": "Sure. C-O-L-D. How is this going to help?",
+          "zh": "当然。C-O-L-D。这个怎么能帮到我？"
+        },
+        {
+          "speaker": "other",
+          "en": "No, not cold. Code. You know, for making phone apps or websites. You can make tons of money writing code.",
+          "zh": "不，是 code（代码），不是 cold（冷）。就是做手机应用或网站用的代码。写代码能赚很多钱。"
+        },
+        {
+          "speaker": "you",
+          "en": "Tons of money? But I can’t code.",
+          "zh": "很多钱？但我不会写代码。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "Can you write code?",
+          "zh": "你会写代码吗？"
+        },
+        {
+          "en": "Sorry, I don’t quite follow.",
+          "zh": "不好意思，我没完全听懂。"
+        },
+        {
+          "en": "Could you give me an example?",
+          "zh": "你能举个例子吗？"
+        },
+        {
+          "en": "When you say empty, do you mean an empty array?",
+          "zh": "你说空，是指空数组吗？"
+        },
+        {
+          "en": "So the API should return an empty array, right?",
+          "zh": "所以接口应该返回空数组，对吧？"
+        }
+      ],
+      "passage": {
+        "title": "什么时候该问对方是什么意思",
+        "en": "When you ask someone for clarification, you are asking them to say something in a different way or provide more information so that you understand them better. This is different from asking a person to repeat something. The person might not have explained themselves clearly, for example, or maybe they used difficult language.",
+        "zh": "当你请别人解释清楚时，你希望对方换一种说法或提供更多信息，这样你就能更好地理解。这和让对方重复一遍有所不同。比如，对方可能没把意思说清楚，也可能用了比较难懂的说法。",
+        "recall": "用三句话背出澄清的目的、它与重复的区别，以及可能没听懂的原因。"
+      },
+      "speak": {
+        "prompt": "同事说接口没查到结果时要返回 empty。用英语确认是空数组还是 null。",
+        "sample": "When you say empty, do you mean an empty array or null? Could you give me an example?"
+      },
+      "grammar": {
+        "title": "用 Can you 问会不会做某事",
+        "example": "Can you write code?",
+        "explanation": "Can you + 动词原形？可询问能力。后面加上具体动作，就能把问题问得更清楚。",
+        "question": "问「你会读这个 Java 堆栈吗？」",
+        "answer": "Can you read this Java stack trace?"
+      },
+      "connectedSpeech": {
+        "sentence": "You can make tons of money writing code.",
+        "focus": "tons‿of",
+        "instruction": "tons 末尾的 /z/ 直接接轻读的 of /əv/。把重音留给 tons 和 money。",
+        "practice": "先连说 tons of，再加 money，最后把句子补全。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/06-clarify-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-20-what-can-you-do/3384429.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "passage": {
+        "src": "/recordings/06-clarify-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/how-to-ask-for-clarification/4726030.html",
+        "credit": "VOA Learning English · Alice Bryant"
+      },
+      "linking": {
+        "src": "/recordings/06-clarify-linking.mp3"
+      }
+    }
+  },
+  "2026-11-17": {
+    "listenPrompt": "听对话中飞机最终几点起飞，旅客又是几点到的。",
+    "lesson": {
+      "title": "听清航班延误和改签信息",
+      "category": "travel",
+      "goal": "听懂飞机实际起飞和到达时间，并练习确认新的登机信息。",
+      "dialogue": [
+        {
+          "speaker": "other",
+          "en": "Hey, how was your trip?",
+          "zh": "嘿，旅行怎么样？"
+        },
+        {
+          "speaker": "you",
+          "en": "Well, it was great, but getting there was a pain. The airport was so crowded because of flight delays. We tried to check in at a kiosk, but the machines were down. So we stood in line for forty-five minutes just to pick up the tickets.",
+          "zh": "旅行很棒，就是去的时候太折腾。航班延误，机场挤得不行。我们想在自助机上办理值机，但机器坏了，所以光取票就排了四十五分钟。"
+        },
+        {
+          "speaker": "other",
+          "en": "Oh no!",
+          "zh": "天哪！"
+        },
+        {
+          "speaker": "you",
+          "en": "Then our flight had a two-hour delay. The plane finally took off at nine.",
+          "zh": "接着我们的航班延误了两小时，飞机终于在九点起飞。"
+        },
+        {
+          "speaker": "other",
+          "en": "What time did you get in?",
+          "zh": "你几点到的？"
+        },
+        {
+          "speaker": "you",
+          "en": "Around four. Our driver picked us up on time and was super sweet. He dropped us off at the hotel and we checked in without any trouble. The rest of the trip was wonderful.",
+          "zh": "四点左右。司机准时接到了我们，人也特别好。他把我们送到酒店，入住很顺利。接下来的旅程很棒。"
+        },
+        {
+          "speaker": "other",
+          "en": "That’s great. I’m looking forward to my next big trip.",
+          "zh": "太好了，我也很期待下一次长途旅行。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "The flight had a two-hour delay.",
+          "zh": "航班延误了两小时。"
+        },
+        {
+          "en": "What time did you get in?",
+          "zh": "你几点到的？"
+        },
+        {
+          "en": "What’s the new departure time?",
+          "zh": "新的起飞时间是几点？"
+        },
+        {
+          "en": "Has the gate changed?",
+          "zh": "登机口变了吗？"
+        },
+        {
+          "en": "I missed my connecting flight.",
+          "zh": "我错过了转机航班。"
+        }
+      ],
+      "passage": {
+        "title": "延误可能让你错过转机",
+        "en": "So, your flight is delayed three hours. But let’s say Chicago is not your final destination. You are supposed to fly another plane from Chicago to your final destination. That is called a layover in American English. You might also hear it called a stopover. The delay means you will miss your flight out of Chicago.",
+        "zh": "你的航班延误了三小时。假设芝加哥还不是最终目的地，你还要从芝加哥转乘另一架飞机。在美式英语里，这叫 layover，有时也叫 stopover。这次延误意味着你会错过从芝加哥出发的那班飞机。",
+        "recall": "按「延误多久、在哪里转机、会错过哪班飞机」的顺序背诵。"
+      },
+      "speak": {
+        "prompt": "听到航班延误。向工作人员确认新起飞时间和登机口，再说明你可能赶不上下一班飞机。",
+        "sample": "What’s the new departure time? Has the gate changed? I might miss my connecting flight."
+      },
+      "grammar": {
+        "title": "用 What time did … 问已经发生的事",
+        "example": "What time did you get in?",
+        "explanation": "What time did + 主语 + 动词原形？询问过去的具体时间。这里 get in 表示到达。",
+        "question": "问「飞机几点起飞的？」",
+        "answer": "What time did the plane take off?"
+      },
+      "connectedSpeech": {
+        "sentence": "Our driver picked us up on time and was super sweet.",
+        "focus": "picked‿us‿up",
+        "instruction": "picked 的尾音 /t/ 接 us，us 的 /s/ 又接 up。三个词连续说，us 读得轻。",
+        "practice": "先连 picked us，再说 picked us up，最后加 on time。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/07-flight-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/words-to-travel-with-part-1/4687812.html",
+        "credit": "VOA Learning English · Alice Bryant"
+      },
+      "passage": {
+        "src": "/recordings/07-flight-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/words-to-travel-with-part-2-airports/4697903.html",
+        "credit": "VOA Learning English · Alice Bryant"
+      },
+      "linking": {
+        "src": "/recordings/07-flight-linking.mp3"
+      }
+    }
+  },
+  "2026-11-18": {
+    "listenPrompt": "听出电脑故障造成了什么损失，以及当事人接下来要怎么赶进度。",
+    "lesson": {
+      "title": "说明故障和它的影响",
+      "category": "work",
+      "goal": "说清出了什么故障、影响是什么，以及打算怎么处理。",
+      "dialogue": [
+        {
+          "speaker": "other",
+          "en": "Okay, let’s go over the shopping list. We don’t want to forget anything.",
+          "zh": "好，咱们过一遍购物清单，免得漏买。"
+        },
+        {
+          "speaker": "you",
+          "en": "Do we have to do that right now?",
+          "zh": "非得现在看吗？"
+        },
+        {
+          "speaker": "other",
+          "en": "No, but the party is next month, so time is running out.",
+          "zh": "不用，但聚会下个月就到了，时间不多了。"
+        },
+        {
+          "speaker": "you",
+          "en": "There’s plenty of time, and right now I have a lot on my mind.",
+          "zh": "时间还多着呢，我现在心里有很多事。"
+        },
+        {
+          "speaker": "other",
+          "en": "Come on, you can’t be that busy.",
+          "zh": "得了吧，你总不至于那么忙。"
+        },
+        {
+          "speaker": "you",
+          "en": "Oh, really? Well, today at work, I lost all my documents when my computer crashed.",
+          "zh": "是吗？今天上班时电脑崩了，我所有文档都没了。"
+        },
+        {
+          "speaker": "other",
+          "en": "Well, you have backups of all your documents, don’t you?",
+          "zh": "你给这些文档都做了备份吧？"
+        },
+        {
+          "speaker": "you",
+          "en": "No. I had just finished writing three long stories. I’ll have to work overtime the rest of the week, or I’ll miss my deadline.",
+          "zh": "没有。我刚写完三篇长稿。这周剩下几天都得加班，不然就赶不上截止日期。"
+        },
+        {
+          "speaker": "other",
+          "en": "Maybe we should change the subject.",
+          "zh": "也许我们该换个话题。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "My computer crashed.",
+          "zh": "我的电脑崩了。"
+        },
+        {
+          "en": "I lost all my documents.",
+          "zh": "我所有文档都没了。"
+        },
+        {
+          "en": "Do you have a backup?",
+          "zh": "你有备份吗？"
+        },
+        {
+          "en": "The request failed in our test environment.",
+          "zh": "请求在测试环境里失败了。"
+        },
+        {
+          "en": "I’ll check the logs and update you.",
+          "zh": "我会查看日志，然后告诉你进展。"
+        }
+      ],
+      "passage": {
+        "title": "视频比文档占用更多带宽",
+        "en": "The word we will talk about today comes from technology: bandwidth. The first definition of bandwidth is the range of frequencies within a given band, especially when used for sending an electronic signal. In computing, it means the largest amount of data that can be passed along a specific path. For example, if you are making a video on your computer, it will use more bandwidth than if you were simply creating a document.",
+        "zh": "今天要讲的是一个技术词：带宽。它最初指某个频段内的频率范围，尤其是用来发送电子信号时。在计算机领域，带宽指特定通路能传送的最大数据量。比如，在电脑上制作视频比创建文档更占带宽。",
+        "recall": "先用一句话说出带宽是什么，再用视频和文档举例。"
+      },
+      "speak": {
+        "prompt": "日会上说明接口在测试环境返回 500。交代影响，并说明你会先查日志。",
+        "sample": "The request returned a 500 error in the test environment. The test couldn’t finish. I’ll check the logs first."
+      },
+      "grammar": {
+        "title": "用 when 把故障和结果连起来",
+        "example": "I lost all my documents when my computer crashed.",
+        "explanation": "主句说结果，when 引出事情发生的时间或当时的情况。两件事已经发生时，这里都用一般过去时。",
+        "question": "说「服务器重启时，请求失败了。」",
+        "answer": "The request failed when the server restarted."
+      },
+      "connectedSpeech": {
+        "sentence": "I lost all my documents when my computer crashed.",
+        "focus": "lost‿all",
+        "instruction": "lost 的尾音 /t/ 贴着 all 的开头说。把 all 读清楚，两个词之间不插入额外的音。",
+        "practice": "先练 lost all，再连到 all my documents。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/08-crash-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/free-up-mental-space-with-more-bandwidth-/4459054.html",
+        "credit": "VOA Learning English · Anna Matteo"
+      },
+      "passage": {
+        "src": "/recordings/08-crash-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/free-up-mental-space-with-more-bandwidth-/4459054.html",
+        "credit": "VOA Learning English · Anna Matteo"
+      },
+      "linking": {
+        "src": "/recordings/08-crash-linking.mp3"
+      }
+    }
+  },
+  "2026-11-19": {
+    "listenPrompt": "听前两个人怎么回答，以及最后一个人说包里有什么。",
+    "lesson": {
+      "title": "确认遗失的包是谁的",
+      "category": "travel",
+      "goal": "听懂对方怎么确认包的主人，再练习向机场工作人员说明行李丢了。",
+      "dialogue": [
+        {
+          "speaker": "you",
+          "en": "Excuse me. Is this bag yours?",
+          "zh": "打扰一下，这是你的包吗？"
+        },
+        {
+          "speaker": "other",
+          "en": "No, it’s not mine. It might be hers.",
+          "zh": "不，不是我的。可能是她的。"
+        },
+        {
+          "speaker": "you",
+          "en": "Thank you. Excuse me. Is this bag yours?",
+          "zh": "谢谢。打扰一下，这是你的包吗？"
+        },
+        {
+          "speaker": "other",
+          "en": "No, it’s not mine. It might be his.",
+          "zh": "不是我的。可能是他的。"
+        },
+        {
+          "speaker": "you",
+          "en": "Thank you. Hello. Is this bag yours?",
+          "zh": "谢谢。你好，这是你的包吗？"
+        },
+        {
+          "speaker": "other",
+          "en": "Yes, that’s mine. These are all my travel things. Thank you. Thank you!",
+          "zh": "对，是我的。这是我旅行带的东西。太谢谢你了！"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "Is this bag yours?",
+          "zh": "这是你的包吗？"
+        },
+        {
+          "en": "It’s not mine.",
+          "zh": "这不是我的。"
+        },
+        {
+          "en": "I lost my wallet.",
+          "zh": "我的钱包丢了。"
+        },
+        {
+          "en": "My bag didn’t arrive.",
+          "zh": "我的行李没到。"
+        },
+        {
+          "en": "When should I expect an update?",
+          "zh": "我大概什么时候能收到新消息？"
+        }
+      ],
+      "passage": {
+        "title": "出门前发现钱包丢了",
+        "en": "Hey there! Tonight, I am teaching my ukulele class. It is far away, so I am going to ride the Metro. Oh no! I lost my wallet! It has my Metro card, my credit card, and my money!",
+        "zh": "你好！今晚我要教尤克里里课。地方很远，所以我打算坐地铁。糟了！我的钱包丢了！地铁卡、信用卡和现金都在里面！",
+        "recall": "说清打算去哪儿、丢了什么、里面装着什么，再尝试背完整段。"
+      },
+      "speak": {
+        "prompt": "你的黑色旅行包没出现在行李转盘上。到服务台说明情况，给对方看行李条，并问多久会有新消息。",
+        "sample": "My black travel bag didn’t arrive. Here’s my baggage tag. When should I expect an update?"
+      },
+      "grammar": {
+        "title": "用 mine 和 yours 指物品的主人",
+        "example": "Is this bag yours?",
+        "explanation": "yours 相当于 your bag，mine 相当于 my bag。包已经说过时，可以用这类词来避免重复。",
+        "question": "说「这不是我的。可能是她的。」",
+        "answer": "It’s not mine. It might be hers."
+      },
+      "connectedSpeech": {
+        "sentence": "Is this bag yours?",
+        "focus": "bag‿yours",
+        "instruction": "bag 尾音 /ɡ/ 放轻，紧接 yours 开头的 /j/。重读 bag 和 yours，中间保持连贯。",
+        "practice": "先说 bag yours，再把 Is this 加回去。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/09-bag-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-37-lets-agree-to-disagree/3574029.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "passage": {
+        "src": "/recordings/09-bag-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-43-time-for-plan-b/3666458.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "linking": {
+        "src": "/recordings/09-bag-linking.mp3"
+      }
+    }
+  },
+  "2026-11-20": {
+    "listenPrompt": "两人讨论城市生活。听出 Anna 同意了哪一点，又对哪一点有不同看法。",
+    "lesson": {
+      "title": "在评审时表达不同意见",
+      "category": "work",
+      "goal": "练习先确认同意的部分，再说明不同意见和建议。",
+      "dialogue": [
+        {
+          "speaker": "other",
+          "en": "The city is not beautiful. It’s noisy and dirty.",
+          "zh": "城市不好看，又吵又脏。"
+        },
+        {
+          "speaker": "you",
+          "en": "I disagree. I think all the different buildings are beautiful. And I like to watch all the different people.",
+          "zh": "我不同意。我觉得各种各样的建筑都很好看，我也喜欢观察形形色色的人。"
+        },
+        {
+          "speaker": "other",
+          "en": "That’s another thing that is different. People in the country are friendly. They always say hello. Here, no one says hello. I think city people are rude.",
+          "zh": "还有个不同点。乡下的人很友好，总是打招呼。这里却没人打招呼，我觉得城里人不礼貌。"
+        },
+        {
+          "speaker": "you",
+          "en": "Well, I agree. Country people are friendly. But I don’t think city people are rude. I think they’re just busy.",
+          "zh": "嗯，我同意乡下的人很友好。不过我不觉得城里人没礼貌。我觉得他们只是太忙了。"
+        },
+        {
+          "speaker": "other",
+          "en": "That’s a good point.",
+          "zh": "这点说得好。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "I agree with that part.",
+          "zh": "我同意这一部分。"
+        },
+        {
+          "en": "I don’t think that handles the empty case.",
+          "zh": "我觉得这段逻辑没有处理为空的情况。"
+        },
+        {
+          "en": "That’s a good point.",
+          "zh": "这点说得好。"
+        },
+        {
+          "en": "How about we add a test?",
+          "zh": "我们加一个测试怎么样？"
+        },
+        {
+          "en": "Could we look at the tests together?",
+          "zh": "我们能一起看看测试吗？"
+        }
+      ],
+      "passage": {
+        "title": "怎么友好地提建议",
+        "en": "The phrase how about is one common way to make a friendly suggestion in English. To make a suggestion means to offer an idea or plan for someone to think about. You probably already know a few ways to make suggestions in English, using words such as could or should.",
+        "zh": "在英语里，how about 是友好地提建议的一种常见说法。提建议就是给对方一个可以考虑的想法或计划。你可能已经知道一些英文提建议的方式，比如用 could 或 should。",
+        "recall": "按「常见句式、建议的定义、其他可用的词」背诵，再用 How about 提一个测试建议。"
+      },
+      "speak": {
+        "prompt": "评审 Java 改动。先认可对方的方案，然后指出空结果还没有测试，建议补一个测试。",
+        "sample": "I agree with this approach. But I don’t think we cover the empty result. How about we add a test for it?"
+      },
+      "grammar": {
+        "title": "用 I don’t think 表达不同意见",
+        "example": "I don’t think city people are rude.",
+        "explanation": "I don’t think + 主语 + 动词，常用来表达自己不同意后面这个判断。先说同意哪一部分，再提出具体异议。",
+        "question": "说「我觉得这个测试没有覆盖空列表。」",
+        "answer": "I don’t think this test covers an empty list."
+      },
+      "connectedSpeech": {
+        "sentence": "That’s a good point.",
+        "focus": "that’s‿a",
+        "instruction": "that’s 的尾音 /s/ 紧接 a 的轻音 /ə/。a 说轻，重音放在 good point。",
+        "practice": "先把 that’s a 连起来，再加 good point。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/10-review-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-37-lets-agree-to-disagree/3574029.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "passage": {
+        "src": "/recordings/10-review-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/making-and-responding-to-suggestions/4266045.html",
+        "credit": "VOA Learning English · Alice Bryant"
+      },
+      "linking": {
+        "src": "/recordings/10-review-linking.mp3"
+      }
+    }
+  },
+  "2026-11-21": {
+    "listenPrompt": "听球赛几点开始，以及对方为什么觉得骑车可能更快。",
+    "lesson": {
+      "title": "打车前确认出发时间和路线",
+      "category": "travel",
+      "goal": "听懂对方为什么建议换交通方式，再练习上车后确认目的地。",
+      "dialogue": [
+        {
+          "speaker": "other",
+          "en": "What time is the game?",
+          "zh": "比赛几点开始？"
+        },
+        {
+          "speaker": "you",
+          "en": "Seven o’clock.",
+          "zh": "七点。"
+        },
+        {
+          "speaker": "other",
+          "en": "Do you have a ticket?",
+          "zh": "你有票吗？"
+        },
+        {
+          "speaker": "you",
+          "en": "No, not yet.",
+          "zh": "没有，还没买。"
+        },
+        {
+          "speaker": "other",
+          "en": "Anna, you should go a lot earlier than seven o’clock.",
+          "zh": "安娜，你应该比七点早得多出发。"
+        },
+        {
+          "speaker": "you",
+          "en": "That is why I’m taking a taxi. Taxi!",
+          "zh": "所以我才打车。出租车！"
+        },
+        {
+          "speaker": "other",
+          "en": "Anna, Anna, that is not a good idea. A bicycle is faster than a taxi.",
+          "zh": "安娜，这主意不太好。骑自行车比打车快。"
+        },
+        {
+          "speaker": "you",
+          "en": "Oh, Ashley. Ashley, Ashley, Ashley. A car is faster than your bicycle.",
+          "zh": "哦，阿什莉。汽车可比你的自行车快。"
+        },
+        {
+          "speaker": "other",
+          "en": "In D.C. traffic, sometimes a bicycle is faster than a car. And right now, there is a lot of traffic.",
+          "zh": "华盛顿特区有时候堵起来，骑车比开车快。现在路上车就很多。"
+        },
+        {
+          "speaker": "you",
+          "en": "Good point. But I don’t have a bicycle.",
+          "zh": "有道理，不过我没有自行车。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "What time is the game?",
+          "zh": "比赛几点开始？"
+        },
+        {
+          "en": "There is a lot of traffic.",
+          "zh": "路上车很多。"
+        },
+        {
+          "en": "A bicycle is faster than a taxi.",
+          "zh": "骑车比打车快。"
+        },
+        {
+          "en": "Could you take me to this address?",
+          "zh": "能带我去这个地址吗？"
+        },
+        {
+          "en": "I mean the one on Main Street.",
+          "zh": "我说的是主街上的那家。"
+        }
+      ],
+      "passage": {
+        "title": "赶到了，票却卖完了",
+        "en": "The Metro was a lot faster than a bus, taxi, or bike. And now I’m at Nationals Park. Look at all these fans. So many people like to watch baseball. There’s the ticket window. What? The tickets are sold out?",
+        "zh": "坐地铁比坐公交、打车或骑车快多了。现在我到了国民棒球场。看看这么多球迷，喜欢看棒球的人真多。售票窗口在那儿。什么？票卖完了？",
+        "recall": "按「到达方式、看到球迷、找到窗口、发现票售罄」的顺序背诵。"
+      },
+      "speak": {
+        "prompt": "打车去主街上的酒店。把地址给司机看，确认是主街那家，并问现在大概多久能到。",
+        "sample": "Could you take me to this address? I mean the hotel on Main Street. About how long will it take?"
+      },
+      "grammar": {
+        "title": "用 faster than 比较两种方式",
+        "example": "A bicycle is faster than a taxi.",
+        "explanation": "形容词比较级 + than 用来比较两样东西。faster than 表示「比……快」，a lot faster 可以加强程度。",
+        "question": "说「这个时候坐地铁比打车快多了。」",
+        "answer": "The Metro is a lot faster than a taxi at this time."
+      },
+      "connectedSpeech": {
+        "sentence": "There is a lot of traffic.",
+        "focus": "lot‿of",
+        "instruction": "lot 的尾音接上轻读的 of，两个词放在一拍里。在一些美式口音中能听见很轻的舌尖音。",
+        "practice": "先练 lot of，再连 a lot of traffic。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/11-taxi-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-31-take-me-out-to-the-ball-game/3535235.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "passage": {
+        "src": "/recordings/11-taxi-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-31-take-me-out-to-the-ball-game/3535235.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "linking": {
+        "src": "/recordings/11-taxi-linking.mp3"
+      }
+    }
+  },
+  "2026-11-22": {
+    "listenPrompt": "听清是谁去取蛋糕、谁去取饮料，以及 Steve 到了之后做什么。",
+    "lesson": {
+      "title": "确认谁负责下一步",
+      "category": "work",
+      "goal": "听懂对话里每人负责的任务，并用英语安排工作分工。",
+      "dialogue": [
+        {
+          "speaker": "you",
+          "en": "First, calm down. What still needs to be done?",
+          "zh": "先冷静一下。还有什么事要做？"
+        },
+        {
+          "speaker": "other",
+          "en": "The food needs to be cooked. The cake and drinks need to be picked up. The living room needs to be decorated. And the gift needs to be wrapped. We’ll never finish in time.",
+          "zh": "饭要做，蛋糕和饮料要去取，客厅要布置，礼物也要包。我们肯定来不及。"
+        },
+        {
+          "speaker": "you",
+          "en": "We will. We just need to divide and conquer. You keep cooking. I’ll text Claudia and ask her to pick up the cake on the way over. Then I’ll text Gwen. She can pick up the drinks. When Steve gets here, he can wrap the gift and decorate. He’s good at those things.",
+          "zh": "来得及，我们分头做。你继续做饭。我给克劳迪娅发消息，请她来的路上去取蛋糕。我再联系格温，她可以取饮料。史蒂夫到了可以包装礼物和做布置，他擅长这些。"
+        },
+        {
+          "speaker": "other",
+          "en": "Okay, sounds like a plan. Wait a minute. What will you be doing?",
+          "zh": "好，就这么安排。等等，你做什么？"
+        },
+        {
+          "speaker": "you",
+          "en": "I’m busy. Dividing and conquering doesn’t happen by itself.",
+          "zh": "我忙着呢。分工也得有人协调呀。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "What still needs to be done?",
+          "zh": "还有什么事要做？"
+        },
+        {
+          "en": "We just need to divide and conquer.",
+          "zh": "我们只需要分头解决。"
+        },
+        {
+          "en": "I’ll take care of the tests.",
+          "zh": "我来负责测试。"
+        },
+        {
+          "en": "Can you review the changes by Thursday?",
+          "zh": "你能在周四前审完这些改动吗？"
+        },
+        {
+          "en": "Sounds like a plan.",
+          "zh": "这个安排可以。"
+        }
+      ],
+      "passage": {
+        "title": "把复杂项目分成小任务",
+        "en": "Let’s say you are working on a big project with some co-workers. The project is complex and has many moving parts. So instead of everyone working on the same things at once, you decide to divide and conquer. You assign each person a different task. In the end, the project gets done smoothly and on time.",
+        "zh": "假设你和几位同事在做一个大项目。项目很复杂，有很多环节。你决定分头解决，免得大家同时在做同一件事。你给每个人分配一项不同的任务，项目最后顺利按时完成。",
+        "recall": "按「项目复杂、决定分工、分配任务、按时完成」背诵。"
+      },
+      "speak": {
+        "prompt": "版本周四要交付。用英语说你来跑测试、请对方审核改动，再确认周四一起检查。",
+        "sample": "I’ll run the tests. Can you review the changes by Thursday? Let’s check in on Thursday morning."
+      },
+      "grammar": {
+        "title": "用 needs to be done 问待办",
+        "example": "What still needs to be done?",
+        "explanation": "need to be + 过去分词可说明某件事还有待处理。这里的问题把注意力放在要完成的工作上。",
+        "question": "说「发布说明还要更新。」",
+        "answer": "The release notes still need to be updated."
+      },
+      "connectedSpeech": {
+        "sentence": "She can pick up the drinks.",
+        "focus": "pick‿up",
+        "instruction": "pick 的 /k/ 接上 up 的元音 /ʌ/，两个词之间不停顿。",
+        "practice": "先练 pick up，再加 the drinks，最后回到整句。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/12-assign-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/ways-to-divide-and-conquer-/7614734.html",
+        "credit": "VOA Learning English · Anna Matteo"
+      },
+      "passage": {
+        "src": "/recordings/12-assign-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/ways-to-divide-and-conquer-/7614734.html",
+        "credit": "VOA Learning English · Anna Matteo"
+      },
+      "linking": {
+        "src": "/recordings/12-assign-linking.mp3"
+      }
+    }
+  },
+  "2026-11-23": {
+    "listenPrompt": "听 Anna 在哪里，想让朋友做什么，朋友为什么不能来。",
+    "lesson": {
+      "title": "在外遇到麻烦时打电话求助",
+      "category": "travel",
+      "goal": "用一句话交代你被困在哪里，再礼貌地请对方来帮你。",
+      "dialogue": [
+        {
+          "speaker": "you",
+          "en": "Hi, Marsha.",
+          "zh": "嗨，玛莎。"
+        },
+        {
+          "speaker": "other",
+          "en": "Hi, Anna. What’s up?",
+          "zh": "嗨，安娜。怎么了？"
+        },
+        {
+          "speaker": "you",
+          "en": "I’m stuck downtown without any money. Would you be able to come downtown, please?",
+          "zh": "我困在市中心，身上一分钱也没有。你能来市中心一趟吗？"
+        },
+        {
+          "speaker": "other",
+          "en": "Anna, I can’t. I’m too busy. I have to give a big presentation in one hour. Sorry.",
+          "zh": "安娜，我来不了。我太忙了，一小时后要做个重要演讲。抱歉。"
+        },
+        {
+          "speaker": "you",
+          "en": "That’s okay. Good luck with your presentation.",
+          "zh": "没关系，祝你演讲顺利。"
+        },
+        {
+          "speaker": "other",
+          "en": "Thanks.",
+          "zh": "谢谢。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "I’m stuck downtown.",
+          "zh": "我困在市中心了。"
+        },
+        {
+          "en": "I don’t have any cash with me.",
+          "zh": "我身上没有现金。"
+        },
+        {
+          "en": "Would you be able to come downtown?",
+          "zh": "你能来市中心一趟吗？"
+        },
+        {
+          "en": "Is there anyone else I can call?",
+          "zh": "我还可以给谁打电话？"
+        },
+        {
+          "en": "Thanks anyway.",
+          "zh": "还是谢谢你。"
+        }
+      ],
+      "passage": {
+        "title": "我准备的应急现金呢？",
+        "en": "It’s times like this I remember my father’s important words. He said, “Anna, never…” No, wait. “Always have emergency money.” It’s empty! Time for Plan B. Extra emergency money. No! It’s empty too! Anna, it’s time for Plan C.",
+        "zh": "每到这种时候，我就会想起爸爸的叮嘱。他说：“安娜，千万不要……”不对，等一下，是“永远要备点应急现金。”空的！得用备用方案了。额外的应急现金。不是吧！这也空了！安娜，该用第三个方案了。",
+        "recall": "按「想起叮嘱、找应急现金、两处都没有、换方案」背诵。"
+      },
+      "speak": {
+        "prompt": "你在车站发现手机快没电，想请朋友来接。先说你的位置，再礼貌提出请求。",
+        "sample": "I’m at the station, and my phone is about to die. Would you be able to pick me up?"
+      },
+      "grammar": {
+        "title": "用 Would you be able to 礼貌请求",
+        "example": "Would you be able to come downtown, please?",
+        "explanation": "Would you be able to + 动词原形？常用来询问对方能否帮忙，尤其适合需要对方花时间的请求。",
+        "question": "问「你能到车站来接我吗？」",
+        "answer": "Would you be able to pick me up at the station?"
+      },
+      "connectedSpeech": {
+        "sentence": "I’m stuck downtown without any money.",
+        "focus": "without‿any",
+        "instruction": "without 结尾的 /t/ 接上 any 的元音，让两个词连贯，any 的第一个音节读清。",
+        "practice": "先连 without any，再加 money。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/13-help-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-43-time-for-plan-b/3666458.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "passage": {
+        "src": "/recordings/13-help-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-43-time-for-plan-b/3666458.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "linking": {
+        "src": "/recordings/13-help-linking.mp3"
+      }
+    }
+  },
+  "2026-11-24": {
+    "listenPrompt": "听主管交给 Anna 什么新任务，她什么时候开始。",
+    "lesson": {
+      "title": "确认接手的新任务",
+      "category": "work",
+      "goal": "听懂新任务和开始时间，再向同事确认自己先做哪一部分。",
+      "dialogue": [
+        {
+          "speaker": "you",
+          "en": "Okay. You are not firing me. I am not reading the news. What will I be doing?",
+          "zh": "好，你不会解雇我，我也不播新闻了。那我接下来做什么？"
+        },
+        {
+          "speaker": "other",
+          "en": "Well, you are good at asking questions. You are good at talking to people. You are good at showing your feelings. And you are great at being silly.",
+          "zh": "嗯，你擅长提问、和人交流，也擅长表达自己的情绪。你还很会搞笑。"
+        },
+        {
+          "speaker": "you",
+          "en": "Thank you, Ms. Weaver. But what does all that mean?",
+          "zh": "谢谢你，韦弗女士。不过这是什么意思？"
+        },
+        {
+          "speaker": "other",
+          "en": "I have a new assignment for you. Your skills are perfect for a new show. A children’s show.",
+          "zh": "我有一项新任务给你。你的长处很适合一个新节目。一个儿童节目。"
+        },
+        {
+          "speaker": "you",
+          "en": "A children’s show! That is awesome. When do I start?",
+          "zh": "儿童节目！太好了。我什么时候开始？"
+        },
+        {
+          "speaker": "other",
+          "en": "You start next month. Start thinking of ideas for the show.",
+          "zh": "你下个月开始。先想想节目的点子。"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "What will I be doing?",
+          "zh": "我接下来会做什么？"
+        },
+        {
+          "en": "I have a new assignment for you.",
+          "zh": "我有一项新任务给你。"
+        },
+        {
+          "en": "You start next month.",
+          "zh": "你下个月开始。"
+        },
+        {
+          "en": "Which part should I start with?",
+          "zh": "我该从哪部分开始？"
+        },
+        {
+          "en": "When would you like the first draft?",
+          "zh": "你希望什么时候看到初稿？"
+        }
+      ],
+      "passage": {
+        "title": "几个人怎样一起完成复杂任务",
+        "en": "We can also divide and conquer when trying to complete a difficult task. If you want to complete a complex task, it is helpful to have several people working on it at the same time. You would divide the tasks and delegate them to others. That way, you can conquer or complete the task.",
+        "zh": "想完成一项困难的任务时，也可以把它拆开、分头解决。要完成一项复杂任务，让几个人同时参与会有帮助。你可以把任务拆开并交给不同的人。这样就能把事情做完。",
+        "recall": "按「任务复杂、多人同时做、拆分并分派、完成任务」背诵。"
+      },
+      "speak": {
+        "prompt": "你下周要接手一个新接口。确认自己从哪部分开始，以及什么时候需要交第一版。",
+        "sample": "Which part of the API should I start with? When would you like the first version?"
+      },
+      "grammar": {
+        "title": "用 be good at 说擅长什么",
+        "example": "You are good at asking questions.",
+        "explanation": "be good at 后可接名词或动词的 -ing 形式，用来描述擅长的事。",
+        "question": "说「我擅长排查后端问题。」",
+        "answer": "I’m good at troubleshooting backend issues."
+      },
+      "connectedSpeech": {
+        "sentence": "You are good at asking questions.",
+        "focus": "good‿at",
+        "instruction": "good 末尾的 /d/ 直接接 at 的轻音 /ət/，然后进入重读的 asking。",
+        "practice": "先说 good at，再加 asking questions。"
+      }
+    },
+    "recordings": {
+      "dialogue": {
+        "src": "/recordings/14-assignment-dialogue.mp3",
+        "source": "https://learningenglish.voanews.com/a/lets-learn-english-lesson-19-when-do-you-start/3357760.html",
+        "credit": "VOA Learning English · Let's Learn English"
+      },
+      "passage": {
+        "src": "/recordings/14-assignment-passage.mp3",
+        "source": "https://learningenglish.voanews.com/a/ways-to-divide-and-conquer-/7614734.html",
+        "credit": "VOA Learning English · Anna Matteo"
+      },
+      "linking": {
+        "src": "/recordings/14-assignment-linking.mp3"
+      }
+    }
+  }
+}

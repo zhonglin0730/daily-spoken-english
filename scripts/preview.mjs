@@ -20,6 +20,20 @@ const DB = {
     };
   },
 };
+const RECORDINGS = {
+  async fetch(request) {
+    const pathname = new URL(request.url).pathname;
+    try {
+      const bytes = await readFile(new URL(`../dist/static${pathname}`, import.meta.url));
+      return new Response(request.method === "HEAD" ? null : bytes, {
+        headers: { "Content-Type": "audio/mpeg", "Content-Length": bytes.length },
+      });
+    } catch (error) {
+      if (error.code === "ENOENT") return new Response(null, { status: 404 });
+      throw error;
+    }
+  },
+};
 
 const host = "127.0.0.1";
 const port = Number(process.argv[2] ?? 4176);
@@ -30,7 +44,7 @@ const server = createServer(async (request, response) => {
       init.body = Readable.toWeb(request);
       init.duplex = "half";
     }
-    const result = await worker.fetch(new Request(`http://${host}:${port}${request.url}`, init), { DB });
+    const result = await worker.fetch(new Request(`http://${host}:${port}${request.url}`, init), { DB, RECORDINGS });
     response.writeHead(result.status, Object.fromEntries(result.headers));
     if (result.body) Readable.fromWeb(result.body).pipe(response);
     else response.end();

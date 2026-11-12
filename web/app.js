@@ -17,7 +17,7 @@ fitVirtualPhoneViewport();
 window.addEventListener("resize", fitVirtualPhoneViewport);
 
 const byId = (id) => document.getElementById(id);
-const { lesson, course, current, media } = JSON.parse(byId("page-data").textContent);
+const { lesson, course, current, media, humanAudio, recordings } = JSON.parse(byId("page-data").textContent);
 const speed = byId("rate");
 const complete = byId("complete");
 const completionKey = `daily-english:${lesson.date}`;
@@ -37,6 +37,38 @@ byId("listen-en").textContent = lesson.listen.en;
 byId("listen-zh").textContent = lesson.listen.zh;
 byId("speak-prompt").textContent = lesson.speak.prompt;
 byId("speak-sample").textContent = lesson.speak.sample;
+byId("lesson-audio-kind").textContent = recordings ? "真人对话" : media ? "合成朗读" : "设备朗读";
+
+function fillPracticeSection(section, content, fields) {
+  if (!content) return;
+  byId(section).hidden = false;
+  for (const [id, field] of Object.entries(fields)) byId(id).textContent = content[field];
+}
+
+fillPracticeSection("grammar", lesson.grammar, {
+  "grammar-topic": "title", "grammar-example": "example", "grammar-explanation": "explanation",
+  "grammar-question": "question", "grammar-answer": "answer",
+});
+fillPracticeSection("connected-speech", lesson.connectedSpeech, {
+  "connected-sentence": "sentence", "connected-focus": "focus", "connected-instruction": "instruction",
+  "connected-practice": "practice",
+});
+
+if (humanAudio) {
+  fillPracticeSection("human-audio", humanAudio, { "human-en": "en", "human-zh": "zh" });
+  const source = byId("human-source");
+  source.href = humanAudio.attributionUrl;
+  source.textContent = `录音 ${humanAudio.author}`;
+  const original = byId("human-original");
+  original.href = humanAudio.sentenceUrl;
+  original.textContent = `Tatoeba 例句 ${humanAudio.textAuthor}（${humanAudio.textLicense}）`;
+  const license = byId("human-license");
+  license.href = humanAudio.licenseUrl;
+  license.textContent = humanAudio.license;
+  byId("human-focus").textContent = humanAudio.focus;
+  byId("human-tip").textContent = `。${humanAudio.tip}`;
+  byId("human-linking").hidden = false;
+}
 
 function addBilingualLine(list, line, speaker) {
   const item = document.createElement("li");
@@ -113,6 +145,7 @@ function stopPlayback() {
 }
 
 function beginAudio(track) {
+  track.audio.preservesPitch = true;
   track.audio.playbackRate = Number(speed.value);
   displayPlayback(track, "playing");
   track.audio.play().catch(() => finishPlayback(track, "音频未能播放，请再试一次。"));
@@ -172,13 +205,39 @@ function addPlayback(buttonId, feedbackId, text, source) {
   });
 }
 
-addPlayback("play-listen", "listen-feedback", lesson.listen.en, media?.listen);
+addPlayback("play-listen", "listen-feedback", lesson.listen.en, recordings?.dialogue.src ?? media?.listen);
+if (humanAudio) addPlayback("play-human", "human-feedback", humanAudio.en, humanAudio.src);
 addPlayback("play-phrases", "phrases-feedback", lesson.phrases.map((phrase) => phrase.en).join(" "), media?.phrases);
-if (lesson.dialogue?.length) {
-  addPlayback("play-dialogue", "dialogue-feedback", lesson.dialogue.map((line) => line.en).join(" "), media?.dialogue);
+
+function showRecording(track, title) {
+  const recording = recordings?.[track];
+  if (!recording) return;
+  byId(`play-${track}`).textContent = `播放真人${title}`;
+  byId(`${track}-credit`).hidden = false;
+  const source = byId(`${track}-source`);
+  source.href = recording.source;
+  source.textContent = `原录音 · ${recording.credit}`;
 }
-if (lesson.passage) addPlayback("play-passage", "passage-feedback", lesson.passage.en, media?.passage);
+
+if (lesson.dialogue?.length) {
+  showRecording("dialogue", "对话");
+  addPlayback("play-dialogue", "dialogue-feedback", lesson.dialogue.map((line) => line.en).join(" "), recordings?.dialogue.src ?? media?.dialogue);
+}
+if (lesson.passage) {
+  showRecording("passage", "短文");
+  addPlayback("play-passage", "passage-feedback", lesson.passage.en, recordings?.passage.src ?? media?.passage);
+}
+const linkingRate = byId("linking-rate");
+if (recordings?.linking) {
+  byId("linking-player").hidden = false;
+  addPlayback("play-linking", "linking-feedback", lesson.connectedSpeech.sentence, recordings.linking.src);
+  linkingRate.addEventListener("change", () => {
+    speed.value = linkingRate.value;
+    speed.dispatchEvent(new Event("change"));
+  });
+}
 speed.addEventListener("change", () => {
+  linkingRate.value = speed.value;
   if (playback?.audio) playback.audio.playbackRate = Number(speed.value);
   else if (playback) stopPlayback();
 });

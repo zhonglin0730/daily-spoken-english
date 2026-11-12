@@ -21,7 +21,59 @@ const lessonSchema = fields({
   date: { type: "string", pattern: "^\\d{4}-\\d{2}-\\d{2}$" },
   category: { type: "string", enum: ["travel", "work"] },
   ...lessonContent.properties,
+  grammar: fields({ title: boundedText(45), example: boundedText(160), explanation: boundedText(180), question: boundedText(100), answer: boundedText(160) }),
+  connectedSpeech: fields({ sentence: boundedText(160), focus: boundedText(65), instruction: boundedText(180), practice: boundedText(160) }),
 });
+
+const teachingPatterns = {
+  "could you": {
+    title: "用 Could you 礼貌提出请求",
+    explanation: "Could you + 动词原形？用来礼貌请求对方做某件事。",
+    focus: "could‿you",
+    instruction: "could 的尾音 /d/ 连到 you 的 /j/，在日常语速里常听起来接近 /dʒ/。you 说轻一点，重音留给后面的动作。",
+    work: ["请同事发给你会议记录。", "Could you send me the meeting notes?"],
+    travel: ["请对方再说一遍。", "Could you say that again?"],
+  },
+  "can you": {
+    title: "用 Can you 请求帮忙",
+    explanation: "Can you + 动词原形？在对话中可以用来请对方做某件事。",
+    focus: "can‿you",
+    instruction: "句首 can 通常轻读 /kən/，/n/ 紧接 you 的起音。把重音留给后面的动作。",
+    work: ["请同事检查这个请求。", "Can you check this request?"],
+    travel: ["请对方指一下去车站的路。", "Can you show me the way to the station?"],
+  },
+  "can i": {
+    title: "用 Can I 询问是否可以做某事",
+    explanation: "Can I + 动词原形？用来询问对方是否允许，或表示自己想提出一个请求。",
+    focus: "can‿I",
+    instruction: "让 can 末尾的 /n/ 直接接 I 的 /aɪ/。can 通常读轻一些，两个词之间不停顿。",
+    work: ["问自己能不能先看一下日志。", "Can I look at the logs first?"],
+    travel: ["问自己能不能坐这里。", "Can I sit here?"],
+  },
+  "do i need to": {
+    title: "用 Do I need to 确认是否有必要",
+    explanation: "Do I need to + 动词原形？用于确认自己是否需要做某一步。",
+    focus: "need‿to",
+    instruction: "在 to 后面接辅音时，to 常轻读 /tə/。连着说 need to，把重音放在接下来的动作上。",
+    work: ["问自己是否需要重跑测试。", "Do I need to run the tests again?"],
+    travel: ["问自己是否需要先买票。", "Do I need to buy a ticket first?"],
+  },
+};
+
+function teachingFromLesson(content, category) {
+  for (const { en } of [...content.dialogue, ...content.phrases]) {
+    const sentence = en.match(/^[^.!?]+[.!?]?/)?.[0]?.trim();
+    const key = sentence?.match(/^(Could you|Can you|Can I|Do I need to)\b/i)?.[0].toLowerCase();
+    if (!key || !sentence.endsWith("?")) continue;
+    const rule = teachingPatterns[key];
+    const [question, answer] = rule[category];
+    return {
+      grammar: { title: rule.title, example: sentence, explanation: rule.explanation, question, answer },
+      connectedSpeech: { sentence, focus: rule.focus, instruction: rule.instruction, practice: "先把标出的词连说两遍，再慢速说整句，最后按日常语速复述。" },
+    };
+  }
+  return null;
+}
 
 const tools = [
   {
@@ -74,11 +126,29 @@ async function readLesson(db, date) {
   return row ? JSON.parse(row.payload) : null;
 }
 
-async function renderPage(db, url) {
+function applyRecording(lesson, recorded) {
+  const dialogue = recorded.lesson.dialogue;
+  return {
+    ...lesson,
+    ...recorded.lesson,
+    listen: {
+      prompt: recorded.listenPrompt,
+      en: dialogue.map(({ en }) => en).join(" "),
+      zh: dialogue.map(({ zh }) => zh).join(" "),
+    },
+  };
+}
+
+async function renderPage(db, url, recordingsAvailable) {
   const { results } = await db.prepare(
     "SELECT day AS date, title FROM daily_lessons ORDER BY day ASC",
   ).bind().all();
   const course = [...results.filter((item) => item.date !== assets.seed.date), { date: assets.seed.date, title: assets.seed.title }]
+    .filter(({ date }) => !recordingsAvailable || Object.hasOwn(assets.recordedLessons, date))
+    .map((item) => {
+      const title = recordingsAvailable && assets.recordedLessons[item.date]?.lesson.title;
+      return title ? { ...item, title } : item;
+    })
     .sort((a, b) => a.date.localeCompare(b.date));
   const requested = url.searchParams.get("lesson");
   const index = requested === null
@@ -86,19 +156,20 @@ async function renderPage(db, url) {
     : /^[1-9]\d*$/.test(requested) ? Number(requested) - 1 : -1;
   const current = index >= 0 && index < course.length ? index : 0;
   const selected = course[current];
-  const lesson = await readLesson(db, selected.date) ?? assets.seed;
+  const core = await readLesson(db, selected.date) ?? assets.seed;
+  const recorded = recordingsAvailable ? assets.recordedLessons[core.date] : undefined;
+  const lesson = recorded ? applyRecording(core, recorded) : { ...core, ...assets.teaching[core.date] };
   const media = lesson.date === assets.seed.date ? assets.seedMedia : null;
-  return new Response(assets.template.replace("PAGE_DATA", () => htmlJson({ lesson, media, course, current })), {
+  const humanAudio = recorded ? undefined : assets.humanAudio[lesson.date];
+  const recordings = recorded?.recordings;
+  return new Response(assets.template.replace("PAGE_DATA", () => htmlJson({ lesson, media, humanAudio, recordings, course, current })), {
     headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "private, no-store" },
   });
 }
 
-function serveAudio(request, base64) {
-  const raw = atob(base64);
-  const bytes = new Uint8Array(raw.length);
-  for (let i = 0; i < raw.length; i += 1) bytes[i] = raw.charCodeAt(i);
+function serveAudio(request, bytes, contentType) {
   const headers = new Headers({
-    "Content-Type": "audio/wav",
+    "Content-Type": contentType,
     "Accept-Ranges": "bytes",
     "Cache-Control": "private, max-age=86400",
   });
@@ -150,8 +221,7 @@ async function insertLesson(db, lesson) {
   return result.meta.changes === 1;
 }
 
-async function generateLesson(env, scheduledTime) {
-  const date = shanghaiDay(new Date(scheduledTime));
+async function generateLesson(env, date) {
   if (await readLesson(env.DB, date)) return;
   const recent = (await archive(env.DB, date)).filter((item) => item.date < date).slice(0, 7);
   const previous = recent.length ? await readLesson(env.DB, recent[0].date) : null;
@@ -167,6 +237,7 @@ async function generateLesson(env, scheduledTime) {
       "dialogue 写 6 至 8 轮自然交谈。speaker 只用 other 或 you，交替出场，每轮都给中英对照。phrases 给 5 至 6 句可迁移的表达。",
       "passage 写一篇 45 至 75 个英语单词的连贯第一人称短文，用常见词和简单句，配中文译文和一句中文复述提示。",
       "speak.prompt 用中文换一个相近情境练同一技能，speak.sample 给英文参考。",
+      "对话里至少有一句独立的实际请求或问题。用 Could you、Can you、Can I 或 Do I need to 开头，以问号收尾。",
       "不编造用户项目或成绩。避免重复近七课题。输出符合 schema 的 JSON 对象。",
     ].join(" ") }, { role: "user", content: JSON.stringify({ category, recent: recent.map(({ title }) => title) }) }],
     response_format: { type: "json_schema", json_schema: lessonContent },
@@ -179,8 +250,16 @@ async function generateLesson(env, scheduledTime) {
       try { content = JSON.parse(content); } catch { continue; }
     }
     if (!conforms(content, lessonContent)) continue;
-    await insertLesson(env.DB, { date, category, ...content });
-    console.log(`Daily lesson available for ${date}`);
+    let practice = teachingFromLesson(content, category);
+    if (!practice) {
+      const phrase = category === "work"
+        ? { en: "Could you send me the details?", zh: "能把详细信息发给我吗？" }
+        : { en: "Could you say that again?", zh: "您能再说一遍吗？" };
+      content.phrases = [...content.phrases.slice(0, 5), phrase];
+      practice = teachingFromLesson(content, category);
+    }
+    await insertLesson(env.DB, { date, category, ...content, ...practice });
+    console.log(`Daily lesson draft available for ${date}`);
     return;
   }
   throw new Error(`Invalid generated lesson for ${date}`);
@@ -202,13 +281,31 @@ async function handleMcp(request, db) {
 
 export default {
   async scheduled(controller, env) {
-    await generateLesson(env, controller.scheduledTime);
+    const date = shanghaiDay(new Date(controller.scheduledTime));
+    const recorded = assets.recordedLessons[date];
+    if (!recorded) {
+      await generateLesson(env, date);
+    } else if (!await readLesson(env.DB, date)) {
+      await insertLesson(env.DB, applyRecording({ date }, recorded));
+    }
   },
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (request.method === "GET" && url.pathname === "/") return renderPage(env.DB, url);
-    if ((request.method === "GET" || request.method === "HEAD") && Object.hasOwn(assets.audio, url.pathname)) {
-      return serveAudio(request, assets.audio[url.pathname]);
+    if (request.method === "GET" && url.pathname === "/") return renderPage(env.DB, url, Boolean(env.RECORDINGS));
+    if (request.method === "GET" && url.pathname === "/glossary.json") return new Response(assets.glossary, {
+      headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=3600" },
+    });
+    if (request.method === "GET" || request.method === "HEAD") {
+      if (Object.hasOwn(assets.audio, url.pathname)) {
+        const contentType = url.pathname.endsWith(".mp3") ? "audio/mpeg" : "audio/wav";
+        return serveAudio(request, Uint8Array.fromBase64(assets.audio[url.pathname]), contentType);
+      }
+      if (env.RECORDINGS && /^\/recordings\/[a-z0-9-]+\.mp3$/.test(url.pathname)) {
+        if (!request.headers.has("Range")) return env.RECORDINGS.fetch(request);
+        const full = await env.RECORDINGS.fetch(new Request(request.url));
+        if (!full.ok) return full;
+        return serveAudio(request, new Uint8Array(await full.arrayBuffer()), "audio/mpeg");
+      }
     }
     if (sitesMcpEnabled && request.method === "POST" && url.pathname === "/mcp") return handleMcp(request, env.DB);
     return new Response("Not found", { status: 404 });

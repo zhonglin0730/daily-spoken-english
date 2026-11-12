@@ -99,6 +99,15 @@ p { margin: 0.625rem 0 0; }
   color: var(--light);
   background: var(--forest);
 }
+.lesson-rate { margin: 0 0 1rem; color: var(--muted); }
+.lesson-rate select { background: var(--light); color: var(--forest); }
+#linking-player .lesson-rate { margin: 0; }
+.audio-kind { color: #e5eee5; font-size: 0.875rem; }
+.human-audio { margin: 0 0 1.125rem; padding: 1rem; border: 1px solid var(--line); border-radius: 0.75rem; }
+.audio-credit { margin-top: 0.5rem; overflow-wrap: anywhere; }
+.audio-credit a { color: var(--forest); }
+.connected-focus { color: var(--forest); }
+#grammar-topic { margin: 0.65rem 0 0; font-size: 1.06rem; }
 .feedback { font-size: 0.875rem; }
 .feedback:empty { display: none; }
 
