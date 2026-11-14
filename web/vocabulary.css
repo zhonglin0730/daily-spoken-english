@@ -1,5 +1,35 @@
 .vocab-hint { color: var(--muted); font-size: .875rem; }
 .vocab-word { cursor: pointer; -webkit-touch-callout: none; user-select: none; }
+.audio-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: .625rem;
+}
+.audio-line p { grid-column: 1; }
+.audio-line .line-play {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  min-height: 44px;
+  padding-inline: .5rem;
+  font-size: .875rem;
+  white-space: nowrap;
+}
+.audio-line .line-play-icon {
+  display: inline-grid;
+  place-items: center;
+  min-width: 3.75rem;
+}
+.audio-line:has(p:nth-of-type(3)) .line-play { grid-row-end: span 3; }
+.audio-line[data-speaking] { background: #f9eac4; color: var(--ink); }
+.listen .audio-line[data-speaking] p { color: var(--ink); }
+.vocab-word[data-spoken-word] {
+  background: var(--gold);
+  color: var(--ink);
+  box-shadow: 0 2px var(--forest);
+  border-radius: .125rem;
+}
+.vocab-hint + .feedback { margin-top: .25rem; color: var(--muted); }
 [data-color="yellow"] { background: #ffe59a; color: #232313; }
 [data-color="green"] { background: #c6efc5; color: #152b1d; }
 [data-color="blue"] { background: #cce6ff; color: #182943; }

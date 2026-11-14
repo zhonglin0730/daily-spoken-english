@@ -5,10 +5,11 @@ const path = (name) => new URL(name, root);
 const read = (name) => readFile(path(name), "utf8");
 
 const mediaNames = { listen: "listening", dialogue: "dialogue", phrases: "phrases-v2", passage: "passage" };
-const [html, css, js, vocabCss, vocabJs, glossary, seedText, teachingText, humanText, recordedText, worker, ...clips] = await Promise.all([
+const [html, css, js, practiceJs, vocabCss, vocabJs, glossary, seedText, teachingText, humanText, recordedText, timingText, worker, ...clips] = await Promise.all([
   read("web/index.html"),
   read("web/styles.css"),
   read("web/app.js"),
+  read("web/practice-audio.js"),
   read("web/vocabulary.css"),
   read("web/vocabulary.js"),
   read("web/glossary.json"),
@@ -16,6 +17,7 @@ const [html, css, js, vocabCss, vocabJs, glossary, seedText, teachingText, human
   read("teaching.json"),
   read("human-audio.json"),
   read("recorded-lessons.json"),
+  read("dialogue-timing.json"),
   read("worker/index.js"),
   ...Object.values(mediaNames).map((name) => readFile(path(`media/hotel-${name}.wav`))),
 ]);
@@ -23,8 +25,9 @@ const seed = JSON.parse(seedText);
 const teaching = JSON.parse(teachingText);
 const humanAudio = JSON.parse(humanText);
 const recordedLessons = JSON.parse(recordedText);
+const dialogueTiming = JSON.parse(timingText);
 const template = html.replace("/* PAGE_STYLES */", () => css + "\n" + vocabCss)
-  .replace("/* PAGE_SCRIPT */", () => js + "\n" + vocabJs);
+  .replace("/* PAGE_SCRIPT */", () => practiceJs + "\n" + js + "\n" + vocabJs);
 const seedMedia = Object.fromEntries(Object.entries(mediaNames).map(([key, name]) => [key, `/media/hotel-${name}.wav`]));
 const audio = Object.fromEntries(Object.values(seedMedia).map((url, i) => [url, clips[i].toString("base64")]));
 await Promise.all([...new Set(Object.values(humanAudio).map(({ src }) => src))].map(async (url) => {
@@ -38,7 +41,7 @@ const preview = {
   media: Object.fromEntries(Object.entries(seedMedia).map(([key, url]) => [key, `data:audio/wav;base64,${audio[url]}`])),
   humanAudio: seedHuman && { ...seedHuman, src: `data:audio/mpeg;base64,${audio[seedHuman.src]}` },
 };
-const bundle = `const assets = ${JSON.stringify({ template, seed, seedMedia, teaching, humanAudio, recordedLessons, audio, glossary })};\n`;
+const bundle = `const assets = ${JSON.stringify({ template, seed, seedMedia, teaching, humanAudio, recordedLessons, dialogueTiming, audio, glossary })};\n`;
 
 await Promise.all(["dist/server/", "dist/.openai/", "dist/drizzle/", "dist/static/recordings/"].map((name) => mkdir(path(name), { recursive: true })));
 const recordedPaths = new Set(Object.values(recordedLessons).flatMap(({ recordings }) =>

@@ -17,7 +17,7 @@ fitVirtualPhoneViewport();
 window.addEventListener("resize", fitVirtualPhoneViewport);
 
 const byId = (id) => document.getElementById(id);
-const { lesson, course, current, media, humanAudio, recordings } = JSON.parse(byId("page-data").textContent);
+const { lesson, course, current, media, humanAudio, recordings, dialogueTiming } = JSON.parse(byId("page-data").textContent);
 const speed = byId("rate");
 const complete = byId("complete");
 const completionKey = `daily-english:${lesson.date}`;
@@ -132,6 +132,7 @@ function displayPlayback(track, state) {
 function finishPlayback(track, error = "") {
   if (playback !== track) return;
   playback = undefined;
+  track.detach?.();
   displayPlayback(track, "ready");
   track.feedback.textContent = error;
 }
@@ -151,7 +152,7 @@ function beginAudio(track) {
   track.audio.play().catch(() => finishPlayback(track, "音频未能播放，请再试一次。"));
 }
 
-function addPlayback(buttonId, feedbackId, text, source) {
+function addPlayback(buttonId, feedbackId, text, source, highlights) {
   const button = byId(buttonId);
   const label = button.textContent;
   const feedback = byId(feedbackId);
@@ -171,6 +172,7 @@ function addPlayback(buttonId, feedbackId, text, source) {
     }
 
     stopPlayback();
+    practiceAudio.take(stopPlayback);
     feedback.textContent = "";
     if (!source && (!speech || typeof SpeechSynthesisUtterance !== "function")) {
       feedback.textContent = "此浏览器没有语音朗读，可以打开原文练习。";
@@ -181,6 +183,7 @@ function addPlayback(buttonId, feedbackId, text, source) {
     playback = track;
     if (source) {
       track.audio = new Audio(source);
+      if (highlights) track.detach = practiceAudio.follow(track.audio, highlights.rows, highlights.cues);
       track.audio.addEventListener("ended", () => finishPlayback(track), { once: true });
       track.audio.addEventListener("error", () => finishPlayback(track, "音频未能播放，请再试一次。"), { once: true });
       beginAudio(track);
@@ -205,9 +208,27 @@ function addPlayback(buttonId, feedbackId, text, source) {
   });
 }
 
-addPlayback("play-listen", "listen-feedback", lesson.listen.en, recordings?.dialogue.src ?? media?.listen);
+const dialogueSource = recordings?.dialogue.src;
+const dialogueHighlights = lesson.dialogue?.length
+  ? practiceAudio.addRows(byId("dialogue-lines"), byId("dialogue-feedback"), { source: dialogueSource, cues: dialogueTiming?.dialogue })
+  : undefined;
+addPlayback("play-listen", "listen-feedback", lesson.listen.en, dialogueSource ?? media?.listen, dialogueSource && dialogueHighlights);
 if (humanAudio) addPlayback("play-human", "human-feedback", humanAudio.en, humanAudio.src);
-addPlayback("play-phrases", "phrases-feedback", lesson.phrases.map((phrase) => phrase.en).join(" "), media?.phrases);
+const phrasesButton = byId("play-phrases");
+const phrasesFeedback = byId("phrases-feedback");
+const { paragraphs: phraseParagraphs } = practiceAudio.addRows(byId("phrases"), phrasesFeedback, { source: dialogueSource, cues: dialogueTiming?.phrases });
+phrasesButton.addEventListener("click", () => {
+  if (phrasesButton.hasAttribute("data-playing")) {
+    practiceAudio.stop();
+    return;
+  }
+  phrasesButton.setAttribute("data-playing", "");
+  phrasesButton.textContent = "停止朗读";
+  practiceAudio.readAll(phraseParagraphs, phrasesFeedback, () => {
+    phrasesButton.removeAttribute("data-playing");
+    phrasesButton.textContent = "朗读短句";
+  });
+});
 
 function showRecording(track, title) {
   const recording = recordings?.[track];
@@ -221,7 +242,7 @@ function showRecording(track, title) {
 
 if (lesson.dialogue?.length) {
   showRecording("dialogue", "对话");
-  addPlayback("play-dialogue", "dialogue-feedback", lesson.dialogue.map((line) => line.en).join(" "), recordings?.dialogue.src ?? media?.dialogue);
+  addPlayback("play-dialogue", "dialogue-feedback", lesson.dialogue.map((line) => line.en).join(" "), dialogueSource ?? media?.dialogue, dialogueSource && dialogueHighlights);
 }
 if (lesson.passage) {
   showRecording("passage", "短文");

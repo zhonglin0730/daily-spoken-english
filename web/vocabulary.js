@@ -20,7 +20,10 @@
         ([segment]) => ({ segment, isWordLike: true }),
       );
     });
+    let offset = 0;
     for (const { segment, isWordLike } of segments) {
+      const start = offset;
+      offset += segment.length;
       if (!isWordLike || !/\p{L}/u.test(segment)) {
         fragment.append(segment);
         continue;
@@ -29,6 +32,7 @@
       const word = normalize(segment);
       node.className = "vocab-word";
       node.dataset.word = word;
+      node.dataset.offset = start;
       if (entries.get(word)?.color) node.dataset.color = entries.get(word).color;
       node.textContent = segment;
       if (!marked.has(word)) marked.set(word, []);
@@ -46,8 +50,12 @@
   const intro = document.querySelector(".intro");
   const hint = document.createElement("p");
   hint.className = "vocab-hint";
-  hint.textContent = "长按课文里的词，可以查义、标色或加入生词本。";
+  hint.textContent = "点词听发音，长按或右键查词、标色和收藏。";
   intro.append(hint);
+  const playbackStatus = document.createElement("p");
+  playbackStatus.className = "feedback";
+  playbackStatus.setAttribute("role", "status");
+  hint.after(playbackStatus);
 
   const dialog = document.createElement("dialog");
   dialog.className = "vocab-dialog";
@@ -58,6 +66,7 @@
       <form method="dialog"><button class="button secondary">关闭</button></form>
     </div>
     <section id="vocab-detail" hidden>
+      <button type="button" class="button secondary" id="vocab-pronounce">设备发音</button>
       <p id="vocab-meaning" role="status"></p>
       <p><a id="vocab-external" hidden target="_blank" rel="noopener">查看外部词典</a></p>
       <fieldset><legend>标颜色</legend>
@@ -172,6 +181,9 @@
   }
   bookButton.addEventListener("click", showBook);
   find("#vocab-return").addEventListener("click", showBook);
+  find("#vocab-pronounce").addEventListener("click", () => {
+    practiceAudio.speak(selected.word, { feedback: status });
+  });
   save.addEventListener("click", () => update({ saved: !entries.get(selected.key)?.saved, meaning: explanation }));
   for (const button of colors) button.addEventListener("click", () => update({ color: button.dataset.color }));
   find(".vocab-search").addEventListener("submit", event => {
@@ -192,6 +204,7 @@
     press = { id: event.pointerId, x: event.clientX, y: event.clientY };
     press.timer = setTimeout(() => {
       cancelPress();
+      practiceAudio.stop();
       showWord(word.textContent);
     }, 475);
   });
@@ -202,10 +215,17 @@
     if (press?.id === event.pointerId) cancelPress();
   });
   document.addEventListener("contextmenu", event => {
-    if (event.target.closest(".vocab-word")) event.preventDefault();
+    const word = event.target.closest(".vocab-word");
+    if (!word) return;
+    event.preventDefault();
+    if (event.pointerType === "mouse" || (event.button === 2 && !event.pointerType)) {
+      practiceAudio.stop();
+      showWord(word.textContent);
+    }
   });
   document.addEventListener("click", event => {
     const word = event.target.closest(".vocab-word");
-    if (word && event.pointerType === "mouse") showWord(word.textContent);
+    if (!word || dialog.open) return;
+    practiceAudio.speak(word.textContent, { word, feedback: playbackStatus });
   });
 })();

@@ -162,7 +162,8 @@ async function renderPage(db, url, recordingsAvailable) {
   const media = lesson.date === assets.seed.date ? assets.seedMedia : null;
   const humanAudio = recorded ? undefined : assets.humanAudio[lesson.date];
   const recordings = recorded?.recordings;
-  return new Response(assets.template.replace("PAGE_DATA", () => htmlJson({ lesson, media, humanAudio, recordings, course, current })), {
+  const dialogueTiming = recordings && assets.dialogueTiming[recordings.dialogue.src];
+  return new Response(assets.template.replace("PAGE_DATA", () => htmlJson({ lesson, media, humanAudio, recordings, dialogueTiming, course, current })), {
     headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "private, no-store" },
   });
 }
