@@ -1,4 +1,7 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { technicalLessons } from "../technical.mjs";
+import { listening } from "../technical-listening.mjs";
+import { renderTechnicalPage } from "../technical-page.mjs";
 
 const root = new URL("../", import.meta.url);
 const path = (name) => new URL(name, root);
@@ -26,6 +29,25 @@ const teaching = JSON.parse(teachingText);
 const humanAudio = JSON.parse(humanText);
 const recordedLessons = JSON.parse(recordedText);
 const dialogueTiming = JSON.parse(timingText);
+const dialogueByTrack = new Map(Object.values(recordedLessons).map(recorded => [
+  recorded.recordings.dialogue.src, recorded,
+]));
+function listeningClips(lesson) {
+  return listening[lesson.id].map(([track, line, focus]) => {
+    const source = `/recordings/${track}-dialogue.mp3`;
+    const recorded = dialogueByTrack.get(source);
+    const { en: text, zh: translation } = recorded.lesson.dialogue[line];
+    const [start, end] = dialogueTiming[source].dialogue[line];
+    return { source, start, end, text, translation, focus, credit: recorded.recordings.dialogue.source };
+  });
+}
+const technicalPages = Object.fromEntries([undefined, ...technicalLessons].map(lesson => [
+  lesson ? `/technical/${lesson.id}` : "/technical",
+  renderTechnicalPage({
+    site: "英语随手练", language: "en", lessons: technicalLessons, lesson,
+    clips: lesson && listeningClips(lesson), css: `<style>${css}</style>`,
+  }),
+]));
 const template = html.replace("/* PAGE_STYLES */", () => css + "\n" + vocabCss)
   .replace("/* PAGE_SCRIPT */", () => practiceJs + "\n" + js + "\n" + vocabJs);
 const seedMedia = Object.fromEntries(Object.entries(mediaNames).map(([key, name]) => [key, `/media/hotel-${name}.wav`]));
@@ -41,7 +63,7 @@ const preview = {
   media: Object.fromEntries(Object.entries(seedMedia).map(([key, url]) => [key, `data:audio/wav;base64,${audio[url]}`])),
   humanAudio: seedHuman && { ...seedHuman, src: `data:audio/mpeg;base64,${audio[seedHuman.src]}` },
 };
-const bundle = `const assets = ${JSON.stringify({ template, seed, seedMedia, teaching, humanAudio, recordedLessons, dialogueTiming, audio, glossary })};\n`;
+const bundle = `const assets = ${JSON.stringify({ template, technicalPages, seed, seedMedia, teaching, humanAudio, recordedLessons, dialogueTiming, audio, glossary })};\n`;
 
 await Promise.all(["dist/server/", "dist/.openai/", "dist/drizzle/", "dist/static/recordings/"].map((name) => mkdir(path(name), { recursive: true })));
 const recordedPaths = new Set(Object.values(recordedLessons).flatMap(({ recordings }) =>

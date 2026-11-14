@@ -1,4 +1,12 @@
 .vocab-hint { color: var(--muted); font-size: .875rem; }
+.word-highlight-option {
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+  min-height: 44px;
+  font-size: .875rem;
+  cursor: pointer;
+}
 .vocab-word { cursor: pointer; -webkit-touch-callout: none; user-select: none; }
 .audio-line {
   display: grid;

@@ -293,6 +293,11 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (request.method === "GET" && url.pathname === "/") return renderPage(env.DB, url, Boolean(env.RECORDINGS));
+    if (request.method === "GET" && Object.hasOwn(assets.technicalPages, url.pathname)) {
+      return new Response(assets.technicalPages[url.pathname], {
+        headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" },
+      });
+    }
     if (request.method === "GET" && url.pathname === "/glossary.json") return new Response(assets.glossary, {
       headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=3600" },
     });

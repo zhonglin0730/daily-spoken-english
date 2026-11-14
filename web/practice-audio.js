@@ -2,6 +2,12 @@
   const language = document.querySelector("main [lang='ja']") ? "ja-JP" : "en-US";
   const rate = document.querySelector("#rate");
   const speech = window.speechSynthesis;
+  const wordHighlight = document.createElement("input");
+  wordHighlight.type = "checkbox";
+  const highlightLabel = document.createElement("label");
+  highlightLabel.className = "word-highlight-option";
+  highlightLabel.append(wordHighlight, " 逐词下划线（近似）");
+  rate.closest("label").after(highlightLabel);
   let current;
 
   function stop() {
@@ -59,7 +65,7 @@
       highlight(word);
     };
     utterance.onboundary = ({ charIndex, name }) => {
-      if (current !== playing || word || name !== "word") return;
+      if (current !== playing || word || name !== "word" || !wordHighlight.checked) return;
       highlight(words.find(node => Number(node.dataset.offset) <= charIndex
         && charIndex < Number(node.dataset.offset) + node.textContent.length));
     };
@@ -79,6 +85,7 @@
     let active = -1;
     let highlighted;
     let frame;
+    let buffering = true;
     function paint(next, word) {
       if (active !== next) {
         rows[active]?.removeAttribute("data-speaking");
@@ -93,14 +100,18 @@
     }
     function update(event) {
       cancelAnimationFrame(frame);
+      if (event?.type === "waiting" || event?.type === "seeking" || event?.type === "pause") buffering = true;
+      if (event?.type === "playing" || (event?.type === "seeked" && audio.readyState >= 3)) buffering = false;
       const time = audio.currentTime;
       if (time >= end && !audio.paused) audio.pause();
-      if (event?.type === "waiting" || audio.paused || audio.ended || audio.seeking || time >= end) {
+      if (buffering || audio.paused || audio.ended || audio.seeking || time >= end) {
         paint(-1);
         return;
       }
       const index = cues.findIndex(cue => cue && cue[0] <= time && time < cue[1]);
-      const offset = cues[index]?.[2]?.find(([start, finish]) => start <= time && time < finish)?.[2];
+      const offset = wordHighlight.checked
+        ? cues[index]?.[2]?.find(([start, finish]) => start <= time && time < finish)?.[2]
+        : undefined;
       const word = offset === undefined ? undefined : rows[index].querySelector(`.vocab-word[data-offset="${offset}"]`);
       paint(index, word);
       frame = requestAnimationFrame(update);
