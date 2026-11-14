@@ -5,11 +5,10 @@
   grid-template-columns: minmax(0, 1fr) auto;
   column-gap: .625rem;
 }
-.audio-line p { grid-column: 1; }
+.audio-line > p { grid-column: 1 / -1; }
 .audio-line .line-play {
   grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: center;
+  justify-self: end;
   min-height: 44px;
   padding-inline: .5rem;
   font-size: .875rem;
@@ -18,9 +17,14 @@
 .audio-line .line-play-icon {
   display: inline-grid;
   place-items: center;
-  min-width: 3.75rem;
+  min-width: 44px;
 }
-.audio-line:has(p:nth-of-type(3)) .line-play { grid-row-end: span 3; }
+.audio-line > p.translation:first-child:not([lang]) {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+}
+.audio-line > p.translation:first-child:not([lang]) ~ .line-play { grid-row: 1; }
 .audio-line[data-speaking] { background: #f9eac4; color: var(--ink); }
 .listen .audio-line[data-speaking] p { color: var(--ink); }
 .vocab-word[data-spoken-word] {
